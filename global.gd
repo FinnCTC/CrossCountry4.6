@@ -11,6 +11,6 @@ var fanRotation = Vector3.ZERO
 
 var player_position := Vector3.ZERO
 
-var can_use_grapple = true
+var can_use_grapple = false
 
 var can_glide = true

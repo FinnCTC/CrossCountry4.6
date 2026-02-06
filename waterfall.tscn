@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://du5t35mx0ofne"]
+
+[ext_resource type="Shader" uid="uid://ckvapnb7gjyq3" path="res://shaders/uv_scroll.tres" id="1_3687l"]
+[ext_resource type="Texture2D" uid="uid://2tsy1mn5bkrq" path="res://scenes/placeholders/istockphoto-1093596760-612x612.jpg" id="2_iknir"]
+[ext_resource type="PackedScene" uid="uid://edbk2gbcglku" path="res://models/waterfall.glb" id="3_iknir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1is6e"]
+render_priority = 0
+shader = ExtResource("1_3687l")
+shader_parameter/Scroll = Vector2(0, -1)
+shader_parameter/main_texture = ExtResource("2_iknir")
+
+[node name="Node3D" type="MeshInstance3D" unique_id=504952123]
+
+[node name="waterfall" parent="." unique_id=570099322 instance=ExtResource("3_iknir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.627449, 0.21454453, -0.16240478)
+
+[node name="Plane" parent="waterfall" index="0" unique_id=320977146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7470773, 0.41038096, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_1is6e")
+
+[editable path="waterfall"]

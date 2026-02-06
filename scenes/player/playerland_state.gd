@@ -18,6 +18,7 @@ func _physics_process(_delta: float) -> void:
 
 func on_animation_finished(anim_name):
 	if anim_name == "Land":
+		Global.can_use_grapple = false
 		if not actor.is_on_floor():
 			fall.emit()
 		elif Input.is_action_just_pressed("move_jump"):
