@@ -79,11 +79,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Obstacle Course" unique_id=1806355251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.92998, 0, -0.5659809)
 use_collision = true
+collision_layer = 5
 size = Vector3(16.421997, 1, 12.882935)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Obstacle Course" unique_id=1657423029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.67705, 0, -0.9187374)
 use_collision = true
+collision_layer = 5
 size = Vector3(3, 1, 3)
 
 [node name="TempFan" parent="NavigationRegion3D/Obstacle Course" unique_id=709157862 instance=ExtResource("6_ro8jj")]

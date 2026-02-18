@@ -2191,6 +2191,12 @@ move_shoot={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_3="Enviroment"
+3d_physics/layer_1="Player"
+3d_physics/layer_4="grapple_point"
+
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
