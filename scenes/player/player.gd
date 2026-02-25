@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @export var mouse_sensitivity : float
 @export var movement_speed: int
@@ -12,6 +13,7 @@ extends CharacterBody3D
 @export var land_state: PlayerState
 @export var glide_state: PlayerState
 @export var walk_state: PlayerState
+@export var airdash_state: PlayerState
 
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
 @onready var gc = $GrappleController
@@ -22,7 +24,6 @@ extends CharacterBody3D
 enum {IDLE, RUN, GLIDE, FALL}
 var cur_anim = IDLE
 
-
 var twist_input := 0.0
 var pitch_input := 0.0
 
@@ -32,13 +33,13 @@ var time_accumulator := 0.0
 var last_animation := ""
 var animation_position := 0.0
 
+var can_input := true
 var movement_input := Vector3.ZERO
-
+var has_airdashed := false
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 
-var default_node_signals = ["ready", "renamed", "tree_entered", "tree_exiting", "tree_exited", "child_entered_tree", "child_exiting_tree", "child_order_changed", "replacing_by", "editor_description_changed", "editor_state_changed", "script_changed", "property_list_changed"]
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -51,6 +52,7 @@ func _ready() -> void:
 	
 	fall_state.land.connect(%StateMachine.change_state.bind(land_state, "fall_state"))
 	fall_state.glide.connect(%StateMachine.change_state.bind(glide_state, "fall_state"))
+	fall_state.airdash.connect(%StateMachine.change_state.bind(airdash_state, "fall_state"))
 	
 	land_state.idle.connect(%StateMachine.change_state.bind(idle_state, "land_state"))
 	land_state.jump.connect(%StateMachine.change_state.bind(jump_state, "land_state"))
@@ -63,10 +65,17 @@ func _ready() -> void:
 	walk_state.idle.connect(%StateMachine.change_state.bind(idle_state, "walk_state"))
 	walk_state.jump.connect(%StateMachine.change_state.bind(jump_state, "walk_state"))
 	walk_state.fall.connect(%StateMachine.change_state.bind(fall_state, "walk_state"))
+	
+	airdash_state.fall.connect(%StateMachine.change_state.bind(fall_state, "airdash_state"))
 
 var jump_button_released = false
 
-func _process(_delta: float) -> void:
+var forward := Vector3.ZERO
+
+enum movement_types {COLLIDE, SLIDE}
+var movement_type = movement_types.SLIDE
+
+func _process(delta: float) -> void:
 	#MOVEMENT
 	
 	#Horizontal movement
@@ -75,7 +84,7 @@ func _process(_delta: float) -> void:
 	movement_input.x = Input.get_axis("move_left", "move_right")
 	movement_input.z = Input.get_axis("move_foward", "move_back")
 	
-	var forward = %Camera3D.global_basis.z
+	forward = %Camera3D.global_basis.z
 	var right = %Camera3D.global_basis.x
 
 	
@@ -92,27 +101,6 @@ func _process(_delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 		velocity.z = move_toward(velocity.z, 0, acceleration)
-	
-	#Glide ability
-	
-	var glide_speed = -2
-	
-	
-	#if Input.is_action_pressed("move_jump") and not is_on_floor() and jump_button_released:
-		#if velocity.y < glide_speed:
-			#velocity.y = glide_speed
-		#if Global.fanTime:
-			#velocity.y = glide_speed * -25
-			#if Global.fanRotation != 0.0:
-				#velocity.x = Global.fanRotation * -1
-		
-	
-	#if not Input.is_action_pressed("move_jump"):
-		#jump_button_released = true
-	
-	#if is_on_floor():
-		#jump_button_released = false
-	
 	
 	#gravity
 	
@@ -132,7 +120,10 @@ func _process(_delta: float) -> void:
 	pitch_input = 0.0
 
 	Global.player_position = global_position
-	move_and_slide()
+	if movement_type == movement_types.SLIDE:
+		move_and_slide()
+	elif movement_type == movement_types.COLLIDE:
+		move_and_collide(velocity * delta)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

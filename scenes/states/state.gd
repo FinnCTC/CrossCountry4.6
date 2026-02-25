@@ -1,7 +1,7 @@
 extends Node
 class_name State
 
-@export var actor: Node3D
+@export var actor: Player
 @export var animator: AnimationPlayer
 
 var in_state: bool

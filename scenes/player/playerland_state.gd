@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func enter_state():
 	super()
+	actor.has_airdashed = false
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("move_jump"):

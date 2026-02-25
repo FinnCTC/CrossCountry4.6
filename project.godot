@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="CrossCountry"
-run/main_scene="uid://6biqschifkkt"
+run/main_scene="uid://dpnbgi4m55xjp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://sprites/icon.svg"
 
