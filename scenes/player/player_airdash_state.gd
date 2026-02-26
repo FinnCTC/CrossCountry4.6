@@ -23,6 +23,7 @@ func enter_state():
 	super()
 	actor.can_input = false
 	actor.movement_type = actor.movement_types.COLLIDE
+	actor.has_airdashed = true
 	dash_direction = -(actor.forward * dash_speed)
 	dash_timer.start()
 
@@ -35,7 +36,6 @@ func exit_state():
 	actor.movement_type = actor.movement_types.SLIDE
 
 func on_dash_timer_timeout():
-	print("timeout")
 	if in_state:
 		if actor.is_on_floor() == false:
 			fall.emit()

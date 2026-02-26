@@ -3,6 +3,7 @@ extends PlayerState
 signal land
 signal glide
 signal airdash
+signal fastfall
 
 @export var fall_speed: float
 
@@ -15,8 +16,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_jump") and Global.can_glide:
 		glide.emit()
 
-	if actor.is_on_floor():
+	elif actor.is_on_floor():
 		land.emit()
 
-	if Input.is_action_just_pressed("move_dash"):
+	elif Input.is_action_just_pressed("move_dash") and not actor.has_airdashed:
 		airdash.emit()
+
+	elif Input.is_action_just_pressed("move_fastfall"):
+		fastfall.emit()

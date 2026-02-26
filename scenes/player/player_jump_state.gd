@@ -5,7 +5,7 @@ extends PlayerState
 @export var jump_time: float
 
 signal fall
-signal air_dash
+signal airdash
 signal fast_fall
 
 func _ready() -> void:
@@ -23,8 +23,8 @@ func _physics_process(_delta: float) -> void:
 		fall.emit()
 	if actor.velocity.y <= 0:
 		fall.emit()
-	if Input.is_action_pressed("move_dash"):
-		air_dash.emit()
+	if Input.is_action_pressed("move_dash") and not actor.has_airdashed:
+		airdash.emit()
 	if Input.is_action_pressed("move_fastfall"):
 		fast_fall.emit()
 

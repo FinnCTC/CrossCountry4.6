@@ -4,6 +4,10 @@ signal idle
 signal jump
 signal fall
 
+func enter_state():
+	super()
+	actor.has_airdashed = false
+
 func _physics_process(_delta: float) -> void:
 	if actor.movement_input == Vector3.ZERO:
 		idle.emit()

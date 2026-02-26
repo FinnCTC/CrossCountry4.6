@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://depa1ivq3deur" path="res://scenes/player/player_walk_state.gd" id="8_myrg7"]
 [ext_resource type="Script" uid="uid://cdnnchfsa05te" path="res://scenes/player/player_airdash_state.gd" id="9_lgqa7"]
 [ext_resource type="Animation" uid="uid://c4dg8xq1rfl2o" path="res://models/Anims/keishi_2/anim_k_run.res" id="9_myrg7"]
+[ext_resource type="Script" uid="uid://dh248lq3jomu4" path="res://scenes/player/player_fastfall_state.gd" id="10_8ydkj"]
 [ext_resource type="Script" uid="uid://hma7pticfwq2" path="res://scenes/player/grapple_controller.gd" id="17_kvlxm"]
 [ext_resource type="PackedScene" uid="uid://b3iio6htmb6jh" path="res://scenes/placeholders/temp_rope.tscn" id="17_uf5tr"]
 
@@ -298,7 +299,7 @@ node_connections = [&"output", 0, &"Jump", &"Glide", 0, &"Glide_Machine", &"Glid
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
 height = 1.7392578
 
-[node name="Player" type="CharacterBody3D" unique_id=95237771 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "land_state", "glide_state", "walk_state", "airdash_state")]
+[node name="Player" type="CharacterBody3D" unique_id=95237771 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "land_state", "glide_state", "walk_state", "airdash_state", "fastfall_state")]
 transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.9998409, 0, 0, 0)
 script = ExtResource("1_4flbx")
 mouse_sensitivity = 0.001
@@ -313,6 +314,7 @@ land_state = NodePath("StateMachine/PlayerLandState")
 glide_state = NodePath("StateMachine/PlayerGlideState")
 walk_state = NodePath("StateMachine/PlayerWalkState")
 airdash_state = NodePath("StateMachine/PlayerAirdashState")
+fastfall_state = NodePath("StateMachine/PlayerFastfallState")
 
 [node name="StateMachine" type="Node" parent="." unique_id=843427244 node_paths=PackedStringArray("starting_state")]
 unique_name_in_owner = true
@@ -380,6 +382,16 @@ metadata/_custom_type_script = "uid://chn55xwjm0dse"
 [node name="Timer" type="Timer" parent="StateMachine/PlayerAirdashState" unique_id=1337180944]
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerFastfallState" type="Node" parent="StateMachine" unique_id=662380504 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("10_8ydkj")
+initial_fall_speed = 20
+max_fall_speed = 50
+accel_rate = 2
+animation_name = "Fall"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_2/AnimationPlayer")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
 
 [node name="keishi_2" type="Node3D" parent="." unique_id=889388749]
 transform = Transform3D(0.41500005, 0, 4.656613e-10, 0, 0.415, 0, -4.656613e-10, 0, 0.41500005, 0, 0.98430157, 0)

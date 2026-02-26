@@ -14,6 +14,7 @@ class_name Player
 @export var glide_state: PlayerState
 @export var walk_state: PlayerState
 @export var airdash_state: PlayerState
+@export var fastfall_state: PlayerState
 
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
 @onready var gc = $GrappleController
@@ -53,6 +54,7 @@ func _ready() -> void:
 	fall_state.land.connect(%StateMachine.change_state.bind(land_state, "fall_state"))
 	fall_state.glide.connect(%StateMachine.change_state.bind(glide_state, "fall_state"))
 	fall_state.airdash.connect(%StateMachine.change_state.bind(airdash_state, "fall_state"))
+	fall_state.fastfall.connect(%StateMachine.change_state.bind(fastfall_state, "fall_state"))
 	
 	land_state.idle.connect(%StateMachine.change_state.bind(idle_state, "land_state"))
 	land_state.jump.connect(%StateMachine.change_state.bind(jump_state, "land_state"))
@@ -61,12 +63,15 @@ func _ready() -> void:
 	
 	glide_state.land.connect(%StateMachine.change_state.bind(land_state, "glide_state"))
 	glide_state.fall.connect(%StateMachine.change_state.bind(fall_state, "glide_state"))
+	glide_state.airdash.connect(%StateMachine.change_state.bind(airdash_state, "glide_state"))
 	
 	walk_state.idle.connect(%StateMachine.change_state.bind(idle_state, "walk_state"))
 	walk_state.jump.connect(%StateMachine.change_state.bind(jump_state, "walk_state"))
 	walk_state.fall.connect(%StateMachine.change_state.bind(fall_state, "walk_state"))
 	
 	airdash_state.fall.connect(%StateMachine.change_state.bind(fall_state, "airdash_state"))
+	
+	fastfall_state.land.connect(%StateMachine.change_state.bind(fall_state, "fastfall_state"))
 
 var jump_button_released = false
 
