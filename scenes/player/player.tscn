@@ -386,7 +386,7 @@ one_shot = true
 [node name="PlayerFastfallState" type="Node" parent="StateMachine" unique_id=662380504 node_paths=PackedStringArray("actor", "animator")]
 script = ExtResource("10_8ydkj")
 initial_fall_speed = 20
-max_fall_speed = 50
+max_fall_speed = 70
 accel_rate = 2
 animation_name = "Fall"
 actor = NodePath("../..")

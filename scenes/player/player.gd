@@ -71,7 +71,7 @@ func _ready() -> void:
 	
 	airdash_state.fall.connect(%StateMachine.change_state.bind(fall_state, "airdash_state"))
 	
-	fastfall_state.land.connect(%StateMachine.change_state.bind(fall_state, "fastfall_state"))
+	fastfall_state.land.connect(%StateMachine.change_state.bind(land_state, "fastfall_state"))
 
 var jump_button_released = false
 
