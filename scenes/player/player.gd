@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 	if movement_input:
 		velocity.x = move_toward(velocity.x,movement_vector.x * max_movement_speed, acceleration)
 		velocity.z = move_toward(velocity.z, movement_vector.z * max_movement_speed, acceleration)
-	else:
+	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 		velocity.z = move_toward(velocity.z, 0, acceleration)
 	
