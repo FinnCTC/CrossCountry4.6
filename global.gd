@@ -14,3 +14,12 @@ var player_position := Vector3.ZERO
 var can_use_grapple = false
 
 var can_glide = true
+
+func absolute_is_greater(num1: float, num2: float) -> bool:
+	num1 = abs(num1)
+	num2 = abs(num2)
+	
+	if num1 > num2:
+		return true
+	else:
+		return false

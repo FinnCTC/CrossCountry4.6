@@ -100,9 +100,25 @@ func _process(delta: float) -> void:
 
 	
 	#handles speeding up and slowing down in movement
+	#if movement_input:
+		#velocity.x = move_toward(velocity.x,movement_vector.x * max_movement_speed, acceleration)
+		#velocity.z = move_toward(velocity.z, movement_vector.z * max_movement_speed, acceleration)
+		
+		
+	var dir_adj_vel = (velocity.z * forward) + (velocity.x * right) #Direction adjusted velocity"
+	print(dir_adj_vel)
 	if movement_input:
-		velocity.x = move_toward(velocity.x,movement_vector.x * max_movement_speed, acceleration)
-		velocity.z = move_toward(velocity.z, movement_vector.z * max_movement_speed, acceleration)
+		if movement_vector.x:
+			var target_velocity = movement_vector.x * max_movement_speed
+			print(target_velocity)
+			#if target_velocity > dir_adj_vel.x:
+			velocity.x = move_toward(velocity.x, target_velocity, acceleration)
+			
+		if movement_vector.z:
+			var target_velocity = movement_vector.z * max_movement_speed
+			#if target_velocity > dir_adj_vel.z:
+			velocity.z = move_toward(velocity.z,target_velocity, acceleration)
+	
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 		velocity.z = move_toward(velocity.z, 0, acceleration)

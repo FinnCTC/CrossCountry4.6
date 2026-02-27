@@ -22,7 +22,7 @@ var dash_direction
 func enter_state():
 	super()
 	actor.can_input = false
-	actor.movement_type = actor.movement_types.COLLIDE
+	actor.movement_type = actor.movement_types.SLIDE
 	actor.has_airdashed = true
 	dash_direction = -(actor.forward * dash_speed)
 	dash_timer.start()
