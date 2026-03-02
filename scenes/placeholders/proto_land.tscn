@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bq4shlha20roq" path="res://scripts/proto_land.gd" id="1_82u04"]
 [ext_resource type="PackedScene" uid="uid://b64epfgyyd3n6" path="res://scenes/placeholders/proto_floor.tscn" id="2_ro8jj"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="3_ocwuw"]
-[ext_resource type="PackedScene" uid="uid://db80ed2tkylf" path="res://scenes/coin.tscn" id="4_st3lb"]
-[ext_resource type="PackedScene" uid="uid://bojrtj0jsmjf0" path="res://scenes/hud.tscn" id="5_hmnn0"]
+[ext_resource type="PackedScene" uid="uid://db80ed2tkylf" path="res://scenes/level/coin.tscn" id="4_st3lb"]
+[ext_resource type="PackedScene" uid="uid://bojrtj0jsmjf0" path="res://scenes/hud/hud.tscn" id="5_hmnn0"]
 [ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="6_ro8jj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cqmma"]

@@ -17,7 +17,6 @@ class_name Player
 @export var fastfall_state: PlayerState
 
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
-@onready var gc = $GrappleController
 
 enum {IDLE, RUN, GLIDE, FALL}
 var cur_anim = IDLE
@@ -34,6 +33,7 @@ var animation_position := 0.0
 var can_input := true
 var movement_input := Vector3.ZERO
 var has_airdashed := false
+var sliding := false
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot

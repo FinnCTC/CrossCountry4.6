@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cgk6q4hmjeqyg"
-path="res://.godot/imported/keishi_new.glb-ceeea933508a022948c1ae7d25cdb0ee.scn"
+path="res://.godot/imported/keishi_new.glb-b5c60d4edf5cf99737dfefaa0f1d600b.scn"
 
 [deps]
 
-source_file="res://keishi_new.glb"
-dest_files=["res://.godot/imported/keishi_new.glb-ceeea933508a022948c1ae7d25cdb0ee.scn"]
+source_file="res://models/player/keishi_new.glb"
+dest_files=["res://.godot/imported/keishi_new.glb-b5c60d4edf5cf99737dfefaa0f1d600b.scn"]
 
 [params]
 

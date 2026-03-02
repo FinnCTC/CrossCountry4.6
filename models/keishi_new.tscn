@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wua555gr0qrs"]
 
-[ext_resource type="PackedScene" uid="uid://cgk6q4hmjeqyg" path="res://keishi_new.glb" id="1_nf7md"]
+[ext_resource type="PackedScene" uid="uid://cgk6q4hmjeqyg" path="res://models/player/keishi_new.glb" id="1_nf7md"]
 
 [node name="keishi_new" unique_id=1332831773 instance=ExtResource("1_nf7md")]
 

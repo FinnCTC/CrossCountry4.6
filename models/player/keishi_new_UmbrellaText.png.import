@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yt3wqfnuxbsh"
-path.s3tc="res://.godot/imported/keishi_new_UmbrellaText.png-f9f26bd960574fe46fd249c87da79cee.s3tc.ctex"
+uid="uid://c853pa6ky2qfm"
+path.s3tc="res://.godot/imported/keishi_new_UmbrellaText.png-277a82007112dc69768c8b1bccffdc17.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://keishi_new_UmbrellaText.png"
-dest_files=["res://.godot/imported/keishi_new_UmbrellaText.png-f9f26bd960574fe46fd249c87da79cee.s3tc.ctex"]
+source_file="res://models/player/keishi_new_UmbrellaText.png"
+dest_files=["res://.godot/imported/keishi_new_UmbrellaText.png-277a82007112dc69768c8b1bccffdc17.s3tc.ctex"]
 
 [params]
 

@@ -15,8 +15,6 @@
 [ext_resource type="Animation" uid="uid://s414jgnvguqn" path="res://models/Anims/keishi_3/A_K_FastFall.anim" id="15_6cv16"]
 [ext_resource type="Animation" uid="uid://bnhja55356nvy" path="res://models/Anims/keishi_3/A_K_Fall.anim" id="16_j4nxn"]
 [ext_resource type="Animation" uid="uid://uv6tu7s3a6s4" path="res://models/Anims/keishi_3/A_K_FastFallFROMG.anim" id="17_28m0y"]
-[ext_resource type="Script" uid="uid://hma7pticfwq2" path="res://scenes/player/grapple_controller.gd" id="17_kvlxm"]
-[ext_resource type="PackedScene" uid="uid://b3iio6htmb6jh" path="res://scenes/placeholders/temp_rope.tscn" id="17_uf5tr"]
 [ext_resource type="Animation" uid="uid://pnvhg7xkqe2u" path="res://models/Anims/keishi_3/A_K_Glide.anim" id="18_uniwh"]
 [ext_resource type="Animation" uid="uid://c8i0hqq57it6m" path="res://models/Anims/keishi_3/A_K_GlideEND.anim" id="19_iqsei"]
 [ext_resource type="Animation" uid="uid://ddilb0m2oiwl2" path="res://models/Anims/keishi_3/A_K_GlideSTART.anim" id="20_tffgl"]
@@ -150,27 +148,9 @@ unique_name_in_owner = true
 transform = Transform3D(0.9999998, -4.656613e-10, -3.7252903e-09, 4.656613e-10, 0.99999994, 8.940697e-08, 3.7252903e-09, -7.4505806e-08, 0.99999994, 7.042661e-05, 0.9082897, 3.1641653)
 current = true
 
-[node name="Temp_Rope" parent="TwistPivot/PitchPivot/Camera3D" unique_id=1349195938 instance=ExtResource("17_uf5tr")]
-transform = Transform3D(1.0000002, -1.6475643e-10, -1.8626451e-09, 6.9849193e-10, 0.98480785, -0.1736482, 0, 0.17364816, 0.9848081, -0.012661416, 0.12324762, -0.69897175)
-visible = false
-
-[node name="RayCast3D" type="RayCast3D" parent="TwistPivot/PitchPivot/Camera3D" unique_id=865398635]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-target_position = Vector3(0, 0, -50)
-collision_mask = 8
-collide_with_areas = true
-collide_with_bodies = false
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=820443119]
 transform = Transform3D(1.000004, 0, -2.6077032e-08, 0, 1, 0, 2.6077032e-08, 0, 1.000004, -0.00073925895, 0.1303711, -0.007220632)
 shape = SubResource("CapsuleShape3D_gmlin")
-
-[node name="GrappleController" type="Node" parent="." unique_id=768805936 node_paths=PackedStringArray("ray", "rope")]
-script = ExtResource("17_kvlxm")
-ray = NodePath("../TwistPivot/PitchPivot/Camera3D/RayCast3D")
-rope = NodePath("../TwistPivot/PitchPivot/Camera3D/Temp_Rope")
-stiffness = 25.0
-damping = 0.25
 
 [node name="keishi_new" parent="." unique_id=1332831773 instance=ExtResource("13_cnsyf")]
 transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 1, 0)

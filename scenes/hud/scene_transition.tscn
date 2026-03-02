@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjahnb5lhq8vh"]
+[gd_scene format=3 uid="uid://bjahnb5lhq8vh"]
 
-[ext_resource type="Script" uid="uid://dlv214f4ckqo1" path="res://scenes/scene_transition.gd" id="1_0wykx"]
+[ext_resource type="Script" uid="uid://dlv214f4ckqo1" path="res://scenes/hud/scene_transition.gd" id="1_0wykx"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovque"]
 
