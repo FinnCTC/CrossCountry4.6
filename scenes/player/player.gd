@@ -19,9 +19,6 @@ class_name Player
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
 @onready var gc = $GrappleController
 
-@onready var anim_tree: AnimationTree = $keishi_2/AnimationTree
-@onready var glide_machine = $keishi_2/AnimationTree.get("parameters/Glide_Machine/playback") as AnimationNodeStateMachinePlayback
-
 enum {IDLE, RUN, GLIDE, FALL}
 var cur_anim = IDLE
 
@@ -152,7 +149,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
-			$keishi_2/Armature/Skeleton3D/Cube.rotate_y(twist_input)
+			$keishi_new/Armature/Skeleton3D/Cube.rotate_y(twist_input)
 
 func _on_oob_body_entered(_body: Node3D) -> void:
 	get_tree().change_scene_to_file("res://scenes/placeholders/proto_land.tscn")
