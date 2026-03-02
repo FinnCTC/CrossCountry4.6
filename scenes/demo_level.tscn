@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpnbgi4m55xjp"]
 
 [ext_resource type="ArrayMesh" uid="uid://cenfj1dvu8scc" path="res://models/tengoku.res" id="2_2vmhc"]
+[ext_resource type="PackedScene" uid="uid://bxjab3te8j8sh" path="res://scenes/level/bounce_pad.tscn" id="2_fmty4"]
 [ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="2_fxo6y"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="3_2vmhc"]
 [ext_resource type="PackedScene" uid="uid://du5t35mx0ofne" path="res://waterfall.tscn" id="4_2vmhc"]
@@ -32,10 +33,13 @@ fog_height_density = 0.0245
 
 [node name="Demo_Level" type="Node3D" unique_id=914745326]
 
-[node name="Fans" type="Node3D" parent="." unique_id=1779364309]
+[node name="Interactibles" type="Node3D" parent="." unique_id=1779364309]
 
-[node name="TempFan" parent="Fans" unique_id=605829970 instance=ExtResource("2_fxo6y")]
+[node name="TempFan" parent="Interactibles" unique_id=605829970 instance=ExtResource("2_fxo6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.902475, 13.823738, 4.671423)
+
+[node name="BouncePad" parent="Interactibles" unique_id=1022529989 instance=ExtResource("2_fmty4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1769843, -1.6325278, 10.69499)
 
 [node name="Enviroment" type="Node3D" parent="." unique_id=2026123418]
 

@@ -106,24 +106,24 @@ func _process(delta: float) -> void:
 		
 		
 	var dir_adj_vel = (velocity.z * forward) + (velocity.x * right) #Direction adjusted velocity"
-	print(dir_adj_vel)
+	#print(dir_adj_vel)
 	if movement_input:
 		if movement_vector.x:
 			var target_velocity = movement_vector.x * max_movement_speed
-			print(target_velocity)
+			#print(target_velocity)
 			#if target_velocity > dir_adj_vel.x:
-			velocity.x = move_toward(velocity.x, target_velocity, acceleration)
+			if %StateMachine.current_state != airdash_state:
+				velocity.x = move_toward(velocity.x, target_velocity, acceleration)
 			
 		if movement_vector.z:
 			var target_velocity = movement_vector.z * max_movement_speed
 			#if target_velocity > dir_adj_vel.z:
-			velocity.z = move_toward(velocity.z,target_velocity, acceleration)
+			if %StateMachine.current_state != airdash_state:
+				velocity.z = move_toward(velocity.z,target_velocity, acceleration)
 	
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 		velocity.z = move_toward(velocity.z, 0, acceleration)
-	
-	#gravity
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

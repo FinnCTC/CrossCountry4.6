@@ -2195,6 +2195,8 @@ move_shoot={
 
 3d_render/layer_3="Enviroment"
 3d_physics/layer_1="Player"
+3d_physics/layer_2="Level"
+3d_physics/layer_3="Enemy"
 3d_physics/layer_4="grapple_point"
 
 [rendering]

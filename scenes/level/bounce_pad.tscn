@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bxjab3te8j8sh"]
+
+[ext_resource type="Script" uid="uid://jeb3cefsvdun" path="res://scenes/level/bounce_pad.gd" id="1_lfsv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0aw11"]
+size = Vector3(5, 1.1683555, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfsv0"]
+size = Vector3(7, 4, 7)
+
+[node name="BouncePad" type="StaticBody3D" unique_id=1022529989]
+script = ExtResource("1_lfsv0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=703784167]
+use_collision = true
+size = Vector3(5, 1, 5)
+
+[node name="BounceArea" type="Area3D" parent="." unique_id=1733977913]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BounceArea" unique_id=701381370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08417773, 0)
+shape = SubResource("BoxShape3D_0aw11")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1652184920]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=1750069621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_lfsv0")
