@@ -15,4 +15,4 @@ func change_state(new_state: State, state_name: String):
 		current_state.exit_state()
 	new_state.enter_state()
 	current_state = new_state
-	#print(new_state.name + " from " + state_name)
+	print(new_state.name + " from " + state_name)

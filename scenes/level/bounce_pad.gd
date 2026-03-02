@@ -10,6 +10,10 @@ func _ready() -> void:
 	detection_area.body_exited.connect(detection_area_on_body_exited)
 
 func _process(delta: float) -> void:
+	
+	var v_distance_to_player = Global.player_position.y - global_position.y as int
+	$DetectionArea/CollisionShape3D.shape.size.y = (abs(v_distance_to_player) * 2) + 3
+	
 	if detection_area.has_overlapping_bodies():
 		for body in detection_area.get_overlapping_bodies():
 			if body is Player:

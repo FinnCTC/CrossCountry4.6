@@ -97,7 +97,8 @@ func _process(delta: float) -> void:
 	
 	movement_vector = movement_vector.rotated(Vector3.UP, pitch_pivot.rotation.y)
 	
-
+	if not %StateMachine.current_state == glide_state:
+		velocity.y -= 50 * delta
 	
 	#handles speeding up and slowing down in movement
 	#if movement_input:
