@@ -70,7 +70,8 @@ func _ready() -> void:
 	
 	fastfall_state.land.connect(%StateMachine.change_state.bind(land_state, "fastfall_state"))
 
-var jump_button_released = false
+var jump_button_released := false
+var dashing := false
 
 var forward := Vector3.ZERO
 
@@ -103,25 +104,26 @@ func _process(delta: float) -> void:
 		#velocity.z = move_toward(velocity.z, movement_vector.z * max_movement_speed, acceleration)
 		
 		
-	var dir_adj_vel = (velocity.z * forward) + (velocity.x * right) #Direction adjusted velocity"
-	#print(dir_adj_vel)
 	if movement_input:
 		if movement_vector.x:
 			var target_velocity = movement_vector.x * max_movement_speed
-			#print(target_velocity)
-			#if target_velocity > dir_adj_vel.x:
 			if %StateMachine.current_state != airdash_state:
 				velocity.x = move_toward(velocity.x, target_velocity, acceleration)
 			
 		if movement_vector.z:
 			var target_velocity = movement_vector.z * max_movement_speed
-			#if target_velocity > dir_adj_vel.z:
 			if %StateMachine.current_state != airdash_state:
 				velocity.z = move_toward(velocity.z,target_velocity, acceleration)
 	
-	elif is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, acceleration)
-		velocity.z = move_toward(velocity.z, 0, acceleration)
+	else:
+		var friction
+		
+		if is_on_floor():
+			friction = 20
+		else:
+			friction = 1
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		velocity.z = move_toward(velocity.z, 0, friction * delta)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

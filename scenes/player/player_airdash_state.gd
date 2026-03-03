@@ -24,6 +24,7 @@ func enter_state():
 	actor.can_input = false
 	actor.movement_type = actor.movement_types.SLIDE
 	actor.has_airdashed = true
+	actor.dashing = true
 	dash_direction = -(actor.forward * dash_speed)
 	dash_timer.start()
 
