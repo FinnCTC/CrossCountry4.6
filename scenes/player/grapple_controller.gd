@@ -13,7 +13,7 @@ var target : Vector3
 var launched = false
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("move_shoot") and Global.can_use_grapple:
+	if Input.is_action_just_pressed("move_shoot"):
 		launch()
 		
 	if Input.is_action_just_released("move_shoot"):

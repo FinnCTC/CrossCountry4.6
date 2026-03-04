@@ -13,7 +13,7 @@ func enter_state():
 
 func _physics_process(delta: float) -> void:
 	#actor.velocity.y -= fall_speed * delta
-	if Input.is_action_just_pressed("move_jump") and Global.can_glide:
+	if Input.is_action_just_pressed("move_jump") and actor.can_glide:
 		glide.emit()
 
 	elif actor.is_on_floor():

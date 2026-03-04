@@ -14,13 +14,10 @@ func _ready() -> void:
 func enter_state():
 	super()
 	actor.velocity.y = glide_speed
-	Global.can_use_grapple = false
 
 func _physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("move_jump") or actor.is_on_floor():
 		animator.play("Glide_END")
-		Global.can_use_grapple = true
-	
 	if Input.is_action_just_pressed("move_jump"):
 		glide.emit()
 	if Input.is_action_just_pressed("move_dash") and not actor.has_airdashed:

@@ -31,6 +31,7 @@ var last_animation := ""
 var animation_position := 0.0
 
 var can_input := true
+var can_glide := true
 var movement_input := Vector3.ZERO
 var has_airdashed := false
 var sliding := false
@@ -147,7 +148,14 @@ func _process(delta: float) -> void:
 		move_and_slide()
 	elif movement_type == movement_types.COLLIDE:
 		move_and_collide(velocity * delta)
-	
+
+func dmg(dmg_amount: int) -> void:
+	die()
+
+func die() -> void:
+	pass
+
+#Camera Movement
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -155,5 +163,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			pitch_input = - event.relative.y * mouse_sensitivity
 			$keishi_new/Armature/Skeleton3D/Cube.rotate_y(twist_input)
 
+#Out of bounds
 func _on_oob_body_entered(_body: Node3D) -> void:
 	get_tree().change_scene_to_file("res://scenes/placeholders/proto_land.tscn")

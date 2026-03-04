@@ -11,9 +11,7 @@ var fanRotation = Vector3.ZERO
 
 var player_position := Vector3.ZERO
 
-var can_use_grapple = false
-
-var can_glide = true
+var current_level: Node3D
 
 func absolute_is_greater(num1: float, num2: float) -> bool:
 	num1 = abs(num1)
