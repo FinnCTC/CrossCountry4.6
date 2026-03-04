@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://cn56slbvm5q43"]
+
+[ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="1_h46st"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43q5g"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_xgnsd"]
+sky_material = SubResource("ProceduralSkyMaterial_43q5g")
+
+[sub_resource type="Environment" id="Environment_fj0ej"]
+background_mode = 2
+sky = SubResource("Sky_xgnsd")
+ambient_light_color = Color(0.8919199, 0.7867652, 0.9385143, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.57716626, 0.56136537, 0.3435307, 1)
+fog_light_energy = 0.51
+fog_density = 0.0045
+fog_aerial_perspective = 0.732
+fog_height = -679.23
+fog_height_density = 0.0245
+
+[node name="TestCourse" type="Node3D" unique_id=1460223960]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1158330739]
+environment = SubResource("Environment_fj0ej")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1362853066]
+transform = Transform3D(-0.8660254, -0.2649597, -0.42402408, 0, -0.84804803, 0.5299193, -0.50000006, 0.45892358, 0.73443115, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Course" type="Node3D" parent="." unique_id=617388661]
+
+[node name="Corridor" type="Node3D" parent="Course" unique_id=1885097875]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Course/Corridor" unique_id=1511614630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, -2.018793, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 7)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Course/Corridor" unique_id=1607754337]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 3, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 7)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Course/Corridor" unique_id=448100132]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -4.5, 3, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Course/Corridor" unique_id=236326191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 8, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 7)
+
+[node name="LongJumpRoom" type="Node3D" parent="Course" unique_id=942696117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.549282)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=803424226]
+transform = Transform3D(0.99996585, -0.008069884, -0.006375172, 0.008069159, 0.99996734, -0.0014927152, 0.0017778089, 0.0004011637, 3.592623, 0, -2.018793, 10.132556)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 1.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=376775856]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 6, -3)
+use_collision = true
+collision_layer = 2
+size = Vector3(16, 1, 8)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=1374816891]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -4.5, 5.956085, -3)
+use_collision = true
+collision_layer = 2
+size = Vector3(16, 1, 8)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=1474378432]
+transform = Transform3D(0.9999833, -0.0040633013, -0.014776156, 0.0040891585, 0.9999718, 0.022609437, 0.004087202, -0.0063100103, 3.5925272, 0, 14.34831, -3)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 8)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=58019085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, -2.018793, -13.992058)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 2)
+
+[node name="Player" parent="." unique_id=95237771 instance=ExtResource("1_h46st")]

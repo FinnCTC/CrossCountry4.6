@@ -118,7 +118,9 @@ func _process(delta: float) -> void:
 	else:
 		var friction
 		
-		if is_on_floor():
+		if dashing:
+			friction = 0.2
+		elif is_on_floor():
 			friction = 20
 		else:
 			friction = 1
