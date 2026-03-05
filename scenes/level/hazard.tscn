@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://l0m01lvxijv7"]
+
+[ext_resource type="Script" uid="uid://cvm3hheaqg4ff" path="res://scenes/level/hazard.gd" id="1_gt85c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt85c"]
+albedo_color = Color(1, 0, 0.016666412, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1cid"]
+size = Vector3(4.6860657, 0.711853, 4.590332)
+
+[node name="Hazard" type="StaticBody3D" unique_id=778791349]
+script = ExtResource("1_gt85c")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=154502083]
+size = Vector3(5, 1, 5)
+material = SubResource("StandardMaterial3D_gt85c")
+
+[node name="DmgArea" type="Area3D" parent="." unique_id=2000466414]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DmgArea" unique_id=1394436384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015823364, -0.021087646, -0.021240234)
+shape = SubResource("BoxShape3D_a1cid")

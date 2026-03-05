@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://cgsd6gur8xyj1"]
+
+[ext_resource type="Script" uid="uid://btwu3ai0n700n" path="res://scenes/player/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cidglrtfm7ipv" path="res://scripts/state_machine.gd" id="2_je7p5"]
+[ext_resource type="Script" uid="uid://dcqqmp4i0h06v" path="res://scenes/player/player_idle_state.gd" id="3_je7p5"]
+[ext_resource type="Script" uid="uid://htvdmeq63jji" path="res://scenes/player/player_jump_state.gd" id="4_fm80t"]
+[ext_resource type="Script" uid="uid://dgg8pfu01f8v5" path="res://scenes/player/player_fall_state.gd" id="5_gx1jg"]
+[ext_resource type="Script" uid="uid://58to7rdcc1fd" path="res://scenes/player/playerland_state.gd" id="6_ugbui"]
+[ext_resource type="Script" uid="uid://dstg65bg6k4w" path="res://scenes/player/player_glide_state.gd" id="7_fcs02"]
+[ext_resource type="Script" uid="uid://depa1ivq3deur" path="res://scenes/player/player_walk_state.gd" id="8_myrg7"]
+[ext_resource type="Script" uid="uid://cdnnchfsa05te" path="res://scenes/player/player_airdash_state.gd" id="9_lgqa7"]
+[ext_resource type="Script" uid="uid://dh248lq3jomu4" path="res://scenes/player/player_fastfall_state.gd" id="10_8ydkj"]
+[ext_resource type="PackedScene" uid="uid://wua555gr0qrs" path="res://models/keishi_new.tscn" id="13_cnsyf"]
+[ext_resource type="Animation" uid="uid://end4bxdsyxds" path="res://models/Anims/keishi_3/A_K_AirDash.anim" id="14_007i1"]
+[ext_resource type="Animation" uid="uid://s414jgnvguqn" path="res://models/Anims/keishi_3/A_K_FastFall.anim" id="15_6cv16"]
+[ext_resource type="Animation" uid="uid://bnhja55356nvy" path="res://models/Anims/keishi_3/A_K_Fall.anim" id="16_j4nxn"]
+[ext_resource type="Animation" uid="uid://uv6tu7s3a6s4" path="res://models/Anims/keishi_3/A_K_FastFallFROMG.anim" id="17_28m0y"]
+[ext_resource type="Animation" uid="uid://pnvhg7xkqe2u" path="res://models/Anims/keishi_3/A_K_Glide.anim" id="18_uniwh"]
+[ext_resource type="Animation" uid="uid://c8i0hqq57it6m" path="res://models/Anims/keishi_3/A_K_GlideEND.anim" id="19_iqsei"]
+[ext_resource type="Animation" uid="uid://ddilb0m2oiwl2" path="res://models/Anims/keishi_3/A_K_GlideSTART.anim" id="20_tffgl"]
+[ext_resource type="Animation" uid="uid://42lnieslt23h" path="res://models/Anims/keishi_3/A_K_Idle.anim" id="21_pk8ii"]
+[ext_resource type="Animation" uid="uid://8lr1voxlkq5p" path="res://models/Anims/keishi_3/A_K_Jump.anim" id="22_5mf0n"]
+[ext_resource type="Animation" uid="uid://daixevavsh3pj" path="res://models/Anims/keishi_3/A_K_Land.anim" id="23_4hvnv"]
+[ext_resource type="Animation" uid="uid://b6lpli5bfs5ji" path="res://models/Anims/keishi_3/A_K_Run.anim" id="24_bbmj2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
+height = 1.7392578
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxw46"]
+_data = {
+&"AirDash": ExtResource("14_007i1"),
+&"Droping": ExtResource("15_6cv16"),
+&"Fall": ExtResource("16_j4nxn"),
+&"FastDrop": ExtResource("17_28m0y"),
+&"Glide": ExtResource("18_uniwh"),
+&"Glide_END": ExtResource("19_iqsei"),
+&"Glide_START": ExtResource("20_tffgl"),
+&"Idle": ExtResource("21_pk8ii"),
+&"Jump": ExtResource("22_5mf0n"),
+&"Land": ExtResource("23_4hvnv"),
+&"Run": ExtResource("24_bbmj2")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=95237771 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "land_state", "glide_state", "walk_state", "airdash_state", "fastfall_state")]
+transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.9998409, 0, 0, 0)
+collision_mask = 2
+script = ExtResource("1_4flbx")
+mouse_sensitivity = 0.001
+movement_speed = 4
+max_movement_speed = 6
+acceleration = 0.8
+gravity = 0.5
+idle_state = NodePath("StateMachine/PlayerIdleState")
+jump_state = NodePath("StateMachine/PlayerJumpState")
+fall_state = NodePath("StateMachine/PlayerFallState")
+land_state = NodePath("StateMachine/PlayerLandState")
+glide_state = NodePath("StateMachine/PlayerGlideState")
+walk_state = NodePath("StateMachine/PlayerWalkState")
+airdash_state = NodePath("StateMachine/PlayerAirdashState")
+fastfall_state = NodePath("StateMachine/PlayerFastfallState")
+
+[node name="StateMachine" type="Node" parent="." unique_id=843427244 node_paths=PackedStringArray("starting_state")]
+unique_name_in_owner = true
+script = ExtResource("2_je7p5")
+starting_state = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" type="Node" parent="StateMachine" unique_id=513719761 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("3_je7p5")
+animation_name = "Idle"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="PlayerJumpState" type="Node" parent="StateMachine" unique_id=1023884375 node_paths=PackedStringArray("timer", "actor", "animator")]
+script = ExtResource("4_fm80t")
+timer = NodePath("Timer")
+jump_strength = 30
+jump_time = 0.3
+animation_name = "Jump"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="Timer" type="Timer" parent="StateMachine/PlayerJumpState" unique_id=1860775832]
+one_shot = true
+
+[node name="PlayerFallState" type="Node" parent="StateMachine" unique_id=105811890 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("5_gx1jg")
+fall_speed = 50.0
+animation_name = "Fall"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="PlayerLandState" type="Node" parent="StateMachine" unique_id=1916350164 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("6_ugbui")
+animation_name = "Land"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="PlayerGlideState" type="Node" parent="StateMachine" unique_id=1161220783 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("7_fcs02")
+animation_name = "Glide_START"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="PlayerWalkState" type="Node" parent="StateMachine" unique_id=148063495 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("8_myrg7")
+animation_name = "Run"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="PlayerAirdashState" type="Node" parent="StateMachine" unique_id=1079038732 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("9_lgqa7")
+dash_speed = 60
+dash_time = 0.1
+animation_name = "AirDash"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="Timer" type="Timer" parent="StateMachine/PlayerAirdashState" unique_id=1337180944]
+wait_time = 0.5
+one_shot = true
+
+[node name="PlayerFastfallState" type="Node" parent="StateMachine" unique_id=662380504 node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("10_8ydkj")
+initial_fall_speed = 20
+max_fall_speed = 70
+accel_rate = 2
+animation_name = "Droping"
+actor = NodePath("../..")
+animator = NodePath("../../keishi_new/AnimationPlayer2")
+metadata/_custom_type_script = "uid://chn55xwjm0dse"
+
+[node name="TwistPivot" type="Node3D" parent="." unique_id=1736324403]
+unique_name_in_owner = true
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.29297924, 0)
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivot" unique_id=1488661790]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot" unique_id=1565724278]
+unique_name_in_owner = true
+transform = Transform3D(0.9999998, -4.656613e-10, -3.7252903e-09, 4.656613e-10, 0.99999994, 8.940697e-08, 3.7252903e-09, -7.4505806e-08, 0.99999994, 7.042661e-05, 0.9082897, 3.1641653)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=820443119]
+transform = Transform3D(1.000004, 0, -2.6077032e-08, 0, 1, 0, 2.6077032e-08, 0, 1.000004, -0.00073925895, 0.1303711, -0.007220632)
+shape = SubResource("CapsuleShape3D_gmlin")
+
+[node name="keishi_new" parent="." unique_id=1332831773 instance=ExtResource("13_cnsyf")]
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 1, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="keishi_new" unique_id=2102272327]
+libraries/ = SubResource("AnimationLibrary_kxw46")

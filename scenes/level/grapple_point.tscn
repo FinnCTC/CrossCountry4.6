@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bq0he7p5pjv1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_aicfd"]
+size = Vector3(0.43, 2.165, 0.31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aicfd"]
+size = Vector3(2, 2, 2)
+
+[node name="grapple_point" type="Node3D" unique_id=60056824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3120098, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=907546180]
+collision_layer = 9
+collision_mask = 9
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1259471697]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.1570363, 0)
+mesh = SubResource("BoxMesh_aicfd")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1558153437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0219253, 0)
+shape = SubResource("BoxShape3D_aicfd")
