@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
+signal dead
+
 @export var mouse_sensitivity : float
 @export var movement_speed: int
 @export var max_movement_speed: int
@@ -153,7 +155,7 @@ func dmg(dmg_amount: int) -> void:
 	die()
 
 func die() -> void:
-	pass
+	dead.emit()
 
 #Camera Movement
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsohpcrjibp0w"]
 
 [ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_opthk"]
+[ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="2_1wrxm"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_xfuqb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wrxm"]
@@ -94,6 +95,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, -2.018793, -13.9920
 use_collision = true
 collision_layer = 2
 size = Vector3(10, 1, 2)
+
+[node name="Interactibles" type="Node3D" parent="." unique_id=684604084]
+
+[node name="Hazard" parent="Interactibles" unique_id=778791349 instance=ExtResource("2_1wrxm")]
+transform = Transform3D(1.7998133, 0, 0, 0, 1, 0, 0, 0, 3.8175547, 0, -2.8611526, -25.301004)
 
 [node name="Dependancies" type="Node3D" parent="." unique_id=1551035981]
 
