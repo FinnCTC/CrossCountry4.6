@@ -3,6 +3,7 @@ extends Area3D
 @onready var blades = $Blades
 @onready var fan_air = $Air
 
+@export var fan_strength: int
 
 
 const rot_speed = 5

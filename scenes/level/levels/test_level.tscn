@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_opthk"]
 [ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="2_1wrxm"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_xfuqb"]
+[ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="3_1wrxm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wrxm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -73,33 +74,64 @@ collision_layer = 2
 size = Vector3(10, 1, 1.5)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=758855113]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 6, -3)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 6, -4.7963142)
+use_collision = true
+collision_layer = 2
+size = Vector3(16, 1, 9)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=1875974962]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -4.5, 5.956085, -4.7963142)
+use_collision = true
+collision_layer = 2
+size = Vector3(16, 1, 9)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=670168082]
+transform = Transform3D(0.9999833, -0.0040633013, -0.014776156, 0.0040891585, 0.9999718, 0.022609437, 0.004087202, -0.0063100103, 3.5925272, 0.007388078, 14.337006, -4.7962627)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 9)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=1058743466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 6.0625343, -19.716454)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 17, 0.5)
+
+[node name="FanRoom" type="Node3D" parent="." unique_id=1599893158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, -45.549282)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FanRoom" unique_id=1016347755]
+transform = Transform3D(-4.3274277e-08, -1, 0, 0.99, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 6, -3)
 use_collision = true
 collision_layer = 2
 size = Vector3(16, 1, 8)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=1875974962]
+[node name="CSGBox3D3" type="CSGBox3D" parent="FanRoom" unique_id=1088323624]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -4.5, 5.956085, -3)
 use_collision = true
 collision_layer = 2
 size = Vector3(16, 1, 8)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=670168082]
-transform = Transform3D(0.9999833, -0.0040633013, -0.014776156, 0.0040891585, 0.9999718, 0.022609437, 0.004087202, -0.0063100103, 3.5925272, 0, 14.34831, -3)
-use_collision = true
+[node name="CSGBox3D5" type="CSGBox3D" parent="FanRoom" unique_id=824340685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 6.0625343, -16.716454)
 collision_layer = 2
-size = Vector3(10, 1, 8)
+size = Vector3(10, 17, 0.5)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Course/LongJumpRoom" unique_id=1058743466]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, -2.018793, -13.992058)
-use_collision = true
+[node name="CSGBox3D6" type="CSGBox3D" parent="FanRoom" unique_id=56714049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 5.5625343, 10.28355)
 collision_layer = 2
-size = Vector3(10, 1, 2)
+size = Vector3(10, 16, 0.5)
 
 [node name="Interactibles" type="Node3D" parent="." unique_id=684604084]
 
 [node name="Hazard" parent="Interactibles" unique_id=778791349 instance=ExtResource("2_1wrxm")]
 transform = Transform3D(1.7998133, 0, 0, 0, 1, 0, 0, 0, 3.8175547, 0, -2.8611526, -25.301004)
+
+[node name="Hazard2" parent="Interactibles" unique_id=2000304384 instance=ExtResource("2_1wrxm")]
+transform = Transform3D(2.357, 0, 0, 0, 1.31, 0, 0, 0, 6, 0, -17.861153, -49.301003)
+
+[node name="TempFan" parent="Interactibles" unique_id=2030377010 instance=ExtResource("3_1wrxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.033354, -57.551712)
 
 [node name="Dependancies" type="Node3D" parent="." unique_id=1551035981]
 
