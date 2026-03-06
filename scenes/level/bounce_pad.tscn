@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxjab3te8j8sh"]
 
 [ext_resource type="Script" uid="uid://jeb3cefsvdun" path="res://scenes/level/bounce_pad.gd" id="1_lfsv0"]
+[ext_resource type="ArrayMesh" uid="uid://doyac3v83wdoi" path="res://models/bouncepad.res" id="2_nk3qf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0aw11"]
 size = Vector3(5, 1.1683555, 5)
@@ -12,6 +13,7 @@ size = Vector3(7, 4, 7)
 script = ExtResource("1_lfsv0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=703784167]
+visible = false
 use_collision = true
 size = Vector3(5, 1, 5)
 
@@ -27,3 +29,7 @@ shape = SubResource("BoxShape3D_0aw11")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=1750069621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_lfsv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=180060011]
+transform = Transform3D(2.48, 0, 0, 0, 2.48, 0, 0, 0, 2.48, 0, 0.005, 0)
+mesh = ExtResource("2_nk3qf")

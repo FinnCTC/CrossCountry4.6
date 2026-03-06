@@ -39,7 +39,7 @@ fog_height_density = 0.0245
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.902475, 13.823738, 4.671423)
 
 [node name="BouncePad" parent="Interactibles" unique_id=1022529989 instance=ExtResource("2_fmty4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1769843, -1.6325278, 10.69499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6013007, -1.5488632, 10.69499)
 
 [node name="Enviroment" type="Node3D" parent="." unique_id=2026123418]
 
