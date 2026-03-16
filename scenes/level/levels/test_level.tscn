@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="2_1wrxm"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_xfuqb"]
 [ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="3_1wrxm"]
+[ext_resource type="Script" uid="uid://d0pebd2exiyij" path="res://scenes/level/levels/ui.gd" id="5_dbn2f"]
+[ext_resource type="Script" uid="uid://bwld6mmfx0ir3" path="res://scenes/count_up_timer.gd" id="6_8wo1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wrxm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -97,30 +99,85 @@ use_collision = true
 collision_layer = 2
 size = Vector3(10, 17, 0.5)
 
-[node name="FanRoom" type="Node3D" parent="." unique_id=1599893158]
+[node name="FanRoom" type="Node3D" parent="Course" unique_id=1599893158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, -45.549282)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="FanRoom" unique_id=1016347755]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Course/FanRoom" unique_id=1016347755]
 transform = Transform3D(-4.3274277e-08, -1, 0, 0.99, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 6, -3)
 use_collision = true
 collision_layer = 2
 size = Vector3(16, 1, 8)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="FanRoom" unique_id=1088323624]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Course/FanRoom" unique_id=1088323624]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -4.5, 5.956085, -3)
 use_collision = true
 collision_layer = 2
 size = Vector3(16, 1, 8)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="FanRoom" unique_id=824340685]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Course/FanRoom" unique_id=824340685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 6.0625343, -16.716454)
+use_collision = true
 collision_layer = 2
 size = Vector3(10, 17, 0.5)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="FanRoom" unique_id=56714049]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Course/FanRoom" unique_id=56714049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 5.5625343, 10.28355)
 collision_layer = 2
 size = Vector3(10, 16, 0.5)
+
+[node name="TallRoom" type="Node3D" parent="Course" unique_id=1823919699]
+transform = Transform3D(1, 0, 0, 0, 2.8000002, 0, 0, 0, 0.77, 0, 4, -54)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Course/TallRoom" unique_id=135728149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 3.1954927, -10.777885)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 10, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Course/TallRoom" unique_id=2002150839]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, 4.5, 2, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(12, 1, 7)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Course/TallRoom" unique_id=1609481855]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -4.5, 2.5, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(11, 1, 7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Course/TallRoom" unique_id=1281508617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 6, 10.777885)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 5, 1)
+
+[node name="Corridor2" type="Node3D" parent="Course" unique_id=821811235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 19, -51)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Course/Corridor2" unique_id=295497492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, -19, 7.981207, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 7)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Course/Corridor2" unique_id=1439440628]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -9.5, 8.0005, 19)
+use_collision = true
+collision_layer = 2
+size = Vector3(1, 29, 7)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Course/Corridor2" unique_id=1160613903]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 3.592629, -9.5, 8, -25)
+use_collision = true
+collision_layer = 2
+size = Vector3(1, 29, 7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Course/Corridor2" unique_id=1680834484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.592629, 0, 8, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(10, 1, 7)
 
 [node name="Interactibles" type="Node3D" parent="." unique_id=684604084]
 
@@ -133,6 +190,10 @@ transform = Transform3D(2.357, 0, 0, 0, 1.31, 0, 0, 0, 6, 0, -17.861153, -49.301
 [node name="TempFan" parent="Interactibles" unique_id=2030377010 instance=ExtResource("3_1wrxm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.033354, -57.551712)
 
+[node name="OOBBox" parent="Interactibles" unique_id=1000215332 instance=ExtResource("2_1wrxm")]
+transform = Transform3D(1697.9357, 0, 0, 0, 1.441, 0, 0, 0, 4009.0085, 0, -96.86115, -49.301003)
+visible = false
+
 [node name="Dependancies" type="Node3D" parent="." unique_id=1551035981]
 
 [node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=1430558210]
@@ -142,3 +203,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3860196, 4.7683716e-07, 11.
 
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_xfuqb")]
 transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.9998409, 0, 13.755629, 0)
+
+[node name="UI" type="Control" parent="Dependancies" unique_id=1423083308]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("5_dbn2f")
+
+[node name="CountUpTimer" type="Node" parent="Dependancies/UI" unique_id=2129726074]
+script = ExtResource("6_8wo1s")
+metadata/_custom_type_script = "uid://bwld6mmfx0ir3"
+
+[node name="Timer" type="Timer" parent="Dependancies/UI/CountUpTimer" unique_id=538934889]
+autostart = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dependancies/UI" unique_id=1673458100]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TimeLabel" type="Label" parent="Dependancies/UI/VBoxContainer" unique_id=1659794831]
+layout_mode = 2
+text = "0:00"
+horizontal_alignment = 1

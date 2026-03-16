@@ -102,33 +102,33 @@ func _process(delta: float) -> void:
 		velocity.y -= 50 * delta
 	
 	#handles speeding up and slowing down in movement
-	#if movement_input:
-		#velocity.x = move_toward(velocity.x,movement_vector.x * max_movement_speed, acceleration)
-		#velocity.z = move_toward(velocity.z, movement_vector.z * max_movement_speed, acceleration)
-		
-		
 	if movement_input:
-		if movement_vector.x:
+		if movement_vector.x > 0:
 			var target_velocity = movement_vector.x * max_movement_speed
-			if %StateMachine.current_state != airdash_state:
+			if target_velocity > velocity.x:
 				velocity.x = move_toward(velocity.x, target_velocity, acceleration)
-			
-		if movement_vector.z:
+		if movement_vector.x < 0:
+			var target_velocity = movement_vector.x * max_movement_speed
+			if target_velocity < velocity.x:
+				velocity.x = move_toward(velocity.x, target_velocity, acceleration)
+		if movement_vector.z > 0:
 			var target_velocity = movement_vector.z * max_movement_speed
-			if %StateMachine.current_state != airdash_state:
-				velocity.z = move_toward(velocity.z,target_velocity, acceleration)
+			if target_velocity > velocity.z:
+				velocity.z = move_toward(velocity.z, target_velocity, acceleration)
+		if movement_vector.z < 0:
+			var target_velocity = movement_vector.z * max_movement_speed
+			if target_velocity < velocity.z:
+				velocity.z = move_toward(velocity.z, target_velocity, acceleration)
+	var friction
 	
+	if dashing:
+		friction = 20
+	elif is_on_floor():
+		friction = 30
 	else:
-		var friction
-		
-		if dashing:
-			friction = 0.2
-		elif is_on_floor():
-			friction = 20
-		else:
-			friction = 1
-		velocity.x = move_toward(velocity.x, 0, friction * delta)
-		velocity.z = move_toward(velocity.z, 0, friction * delta)
+		friction = 1
+	velocity.x = move_toward(velocity.x, 0, friction * delta)
+	velocity.z = move_toward(velocity.z, 0, friction * delta)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
