@@ -8,12 +8,10 @@ func _ready() -> void:
 	stopwatch.time_updated.connect(on_stopwatch_time_updated)
 
 func on_stopwatch_time_updated(new_minutes:int, new_seconds:int):
-	print(new_seconds)
 	var new_seconds_string = ""
 	if new_seconds < 10:
 		new_seconds_string = "0" + str(new_seconds)
 	else:
 		new_seconds_string = str(new_seconds)
 		
-	print(new_seconds_string)
 	time_label.text = str(new_minutes) + ":" + new_seconds_string
