@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="3_1wrxm"]
 [ext_resource type="Script" uid="uid://d0pebd2exiyij" path="res://scenes/level/levels/ui.gd" id="5_dbn2f"]
 [ext_resource type="Script" uid="uid://bwld6mmfx0ir3" path="res://scenes/count_up_timer.gd" id="6_8wo1s"]
+[ext_resource type="Script" uid="uid://cjjnfs3kw8w6s" path="res://scenes/level/levels/level_ui.gd" id="6_yfxhk"]
+[ext_resource type="Texture2D" uid="uid://bjbleod2jejos" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_grey_bolts_dark.png" id="7_o3tub"]
+[ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="8_yay7t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wrxm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,6 +29,9 @@ fog_density = 0.0045
 fog_aerial_perspective = 0.732
 fog_height = -679.23
 fog_height_density = 0.0245
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3tub"]
+font = ExtResource("8_yay7t")
 
 [node name="TestLevel" type="Node3D" unique_id=1587933933]
 script = ExtResource("1_opthk")
@@ -204,7 +210,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3860196, 4.7683716e-07, 11.
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_xfuqb")]
 transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.9998409, 0, 13.755629, 0)
 
-[node name="UI" type="Control" parent="Dependancies" unique_id=1423083308]
+[node name="UI" type="Control" parent="Dependancies" unique_id=1423083308 node_paths=PackedStringArray("current_ui")]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -214,25 +220,53 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 script = ExtResource("5_dbn2f")
+current_ui = NodePath("LevelUI")
 
-[node name="CountUpTimer" type="Node" parent="Dependancies/UI" unique_id=2129726074]
-script = ExtResource("6_8wo1s")
-metadata/_custom_type_script = "uid://bwld6mmfx0ir3"
+[node name="LevelUI" type="Control" parent="Dependancies/UI" unique_id=1097292845]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_yfxhk")
 
-[node name="Timer" type="Timer" parent="Dependancies/UI/CountUpTimer" unique_id=538934889]
-autostart = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Dependancies/UI" unique_id=1673458100]
+[node name="NinePatchRect" type="NinePatchRect" parent="Dependancies/UI/LevelUI" unique_id=1065207811]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -40.25
+offset_right = 40.25
+offset_bottom = 36.0
 grow_horizontal = 2
+texture = ExtResource("7_o3tub")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
-[node name="TimeLabel" type="Label" parent="Dependancies/UI/VBoxContainer" unique_id=1659794831]
+[node name="VBoxContainer" type="VBoxContainer" parent="Dependancies/UI/LevelUI/NinePatchRect" unique_id=1673458100]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -10.0
+offset_right = 20.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="Dependancies/UI/LevelUI/NinePatchRect/VBoxContainer" unique_id=1659794831]
 layout_mode = 2
 text = "0:00"
+label_settings = SubResource("LabelSettings_o3tub")
 horizontal_alignment = 1
+
+[node name="CountUpTimer" type="Node" parent="Dependancies/UI/LevelUI" unique_id=2129726074]
+script = ExtResource("6_8wo1s")
+metadata/_custom_type_script = "uid://bwld6mmfx0ir3"
+
+[node name="Timer" type="Timer" parent="Dependancies/UI/LevelUI/CountUpTimer" unique_id=538934889]
+autostart = true

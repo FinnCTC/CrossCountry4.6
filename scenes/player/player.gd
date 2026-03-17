@@ -37,6 +37,7 @@ var can_glide := true
 var movement_input := Vector3.ZERO
 var has_airdashed := false
 var sliding := false
+var is_in_fan := false
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot

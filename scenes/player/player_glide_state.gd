@@ -13,21 +13,24 @@ func _ready() -> void:
 
 func enter_state():
 	super()
+	glide_speed = -3
 	actor.velocity.y = glide_speed
 
 func _physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("move_jump") or actor.is_on_floor():
 		animator.play("Glide_END")
+		actor.velocity.y = -15
+		glide_speed = -50
 	if Input.is_action_just_pressed("move_jump"):
 		glide.emit()
 	if Input.is_action_just_pressed("move_dash") and not actor.has_airdashed:
 		airdash.emit()
 		
 		
-	if Global.fanTime:
-		actor.velocity += Global.fanRotation
+	if actor.is_in_fan:
+		actor.velocity.y += 0.6
 	else: 
-		actor.velocity.y = move_toward(actor.velocity.y, -3, delta * 10)
+		actor.velocity.y = move_toward(actor.velocity.y, glide_speed, delta * 10)
 
 func on_animation_finished(anim_name):
 	if in_state:
