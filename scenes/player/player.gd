@@ -73,6 +73,7 @@ func _ready() -> void:
 	airdash_state.fall.connect(%StateMachine.change_state.bind(fall_state, "airdash_state"))
 	
 	fastfall_state.land.connect(%StateMachine.change_state.bind(land_state, "fastfall_state"))
+	fastfall_state.glide.connect(%StateMachine.change_state.bind(glide_state, "fastfall_state"))
 
 var jump_button_released := false
 var dashing := false
@@ -160,7 +161,9 @@ func die() -> void:
 
 #Camera Movement
 func _unhandled_input(event: InputEvent) -> void:
+	print("input")
 	if event is InputEventMouseMotion:
+		print("mouse")
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity

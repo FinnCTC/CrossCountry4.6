@@ -1,6 +1,8 @@
 extends Node3D
 class_name Level
 
+@export var grade_times: Array[int]
+
 @onready var start_point: Node3D = $Dependancies/StartPoint
 @onready var goal_area: Area3D = $Dependancies/GoalArea
 @onready var player: Player = $Dependancies/Player
