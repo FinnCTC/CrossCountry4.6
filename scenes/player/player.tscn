@@ -46,6 +46,7 @@ transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.999
 collision_mask = 2
 script = ExtResource("1_4flbx")
 mouse_sensitivity = 0.001
+controller_sensitivity = 0.015
 movement_speed = 4
 max_movement_speed = 6
 acceleration = 0.8

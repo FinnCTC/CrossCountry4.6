@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c6lmtrfq8y2rc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmtkg"]
+font_size = 100
+
+[node name="PauseScreen" type="Control" unique_id=579878963]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="." unique_id=829420933]
+layout_mode = 0
+offset_right = 956.0
+offset_bottom = 549.0
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_xmtkg")
+horizontal_alignment = 1
+vertical_alignment = 1

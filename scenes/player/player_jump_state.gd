@@ -24,6 +24,7 @@ func _physics_process(_delta: float) -> void:
 	if actor.velocity.y <= 0:
 		fall.emit()
 	if Input.is_action_pressed("move_dash") and not actor.has_airdashed:
+		print("airdash")
 		airdash.emit()
 	if Input.is_action_pressed("move_fastfall"):
 		fast_fall.emit()

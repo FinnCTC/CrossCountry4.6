@@ -4,6 +4,7 @@ class_name Player
 signal dead
 
 @export var mouse_sensitivity : float
+@export var controller_sensitivity: float
 @export var movement_speed: int
 @export var max_movement_speed: int
 @export var acceleration: float
@@ -22,6 +23,9 @@ signal dead
 
 enum {IDLE, RUN, GLIDE, FALL}
 var cur_anim = IDLE
+
+enum CAMERA_MODES {MOUSE, CONTROLLER}
+var camera_mode = CAMERA_MODES.MOUSE
 
 var twist_input := 0.0
 var pitch_input := 0.0
@@ -51,6 +55,7 @@ func _ready() -> void:
 	idle_state.walk.connect(%StateMachine.change_state.bind(walk_state, "idle_state"))
 	
 	jump_state.fall.connect(%StateMachine.change_state.bind(fall_state, "jump_state"))
+	jump_state.airdash.connect(%StateMachine.change_state.bind(airdash_state, "jump_state"))
 	
 	fall_state.land.connect(%StateMachine.change_state.bind(land_state, "fall_state"))
 	fall_state.glide.connect(%StateMachine.change_state.bind(glide_state, "fall_state"))
@@ -137,7 +142,13 @@ func _process(delta: float) -> void:
 	
 	
 	#CAMERA
-
+	
+	if camera_mode == CAMERA_MODES.CONTROLLER:
+		var input_vector = Input.get_vector("look_left", "look_right", "look_down", "look_up")
+		twist_input = - input_vector.x * controller_sensitivity
+		pitch_input = input_vector.y * controller_sensitivity
+		$keishi_new/Armature/Skeleton3D/Cube.rotate_y(twist_input)
+	
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
 	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
@@ -146,7 +157,7 @@ func _process(delta: float) -> void:
 	)
 	twist_input = 0.0
 	pitch_input = 0.0
-
+	
 	Global.player_position = global_position
 	if movement_type == movement_types.SLIDE:
 		move_and_slide()
@@ -161,13 +172,14 @@ func die() -> void:
 
 #Camera Movement
 func _unhandled_input(event: InputEvent) -> void:
-	print("input")
 	if event is InputEventMouseMotion:
-		print("mouse")
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			camera_mode == CAMERA_MODES.MOUSE
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
 			$keishi_new/Armature/Skeleton3D/Cube.rotate_y(twist_input)
+	elif event is InputEventJoypadMotion:
+		camera_mode = CAMERA_MODES.CONTROLLER
 
 #Out of bounds
 func _on_oob_body_entered(_body: Node3D) -> void:
