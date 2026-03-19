@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b1kdueq3lwued"]
+
+[ext_resource type="PackedScene" uid="uid://dyv1q0fylw3kk" path="res://models/fan.glb" id="1_8vgsl"]
+
+[node name="fan" unique_id=498759780 instance=ExtResource("1_8vgsl")]
