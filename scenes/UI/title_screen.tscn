@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://boafbjo4mvrbe"]
+
+[ext_resource type="Texture2D" uid="uid://c3c88m684hreg" path="res://sprites/ObakeLogo.png" id="1_wctsj"]
+[ext_resource type="Script" uid="uid://cvv44vgbewjfa" path="res://scenes/UI/title_screen.gd" id="1_yjsyi"]
+[ext_resource type="Texture2D" uid="uid://cdxbks7vansu3" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_brown.png" id="2_yjsyi"]
+[ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="3_82207"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvnbb"]
+font = ExtResource("3_82207")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TitleScreen" type="Control" unique_id=858868362]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yjsyi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=410649010]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 356.0
+offset_bottom = 476.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=509060016]
+layout_mode = 2
+texture = ExtResource("1_wctsj")
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer" unique_id=567729220]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_yjsyi")
+texture_pressed = ExtResource("2_yjsyi")
+texture_hover = ExtResource("2_yjsyi")
+texture_disabled = ExtResource("2_yjsyi")
+texture_focused = ExtResource("2_yjsyi")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureButton" unique_id=221032218]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "START "
+label_settings = SubResource("LabelSettings_rvnbb")
+
+[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

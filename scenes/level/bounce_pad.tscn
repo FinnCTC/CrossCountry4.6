@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxjab3te8j8sh"]
 
 [ext_resource type="Script" uid="uid://jeb3cefsvdun" path="res://scenes/level/bounce_pad.gd" id="1_lfsv0"]
-[ext_resource type="ArrayMesh" uid="uid://doyac3v83wdoi" path="res://models/bouncepad.res" id="2_nk3qf"]
+[ext_resource type="ArrayMesh" uid="uid://dy4gauq8do1j7" path="res://models/bouncepad.res" id="2_nk3qf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0aw11"]
 size = Vector3(5, 1.1683555, 5)

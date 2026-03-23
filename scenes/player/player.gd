@@ -56,6 +56,7 @@ func _ready() -> void:
 	
 	jump_state.fall.connect(%StateMachine.change_state.bind(fall_state, "jump_state"))
 	jump_state.airdash.connect(%StateMachine.change_state.bind(airdash_state, "jump_state"))
+	jump_state.fast_fall.connect(%StateMachine.change_state.bind(fastfall_state, "jump_state"))
 	
 	fall_state.land.connect(%StateMachine.change_state.bind(land_state, "fall_state"))
 	fall_state.glide.connect(%StateMachine.change_state.bind(glide_state, "fall_state"))
@@ -76,6 +77,7 @@ func _ready() -> void:
 	walk_state.fall.connect(%StateMachine.change_state.bind(fall_state, "walk_state"))
 	
 	airdash_state.fall.connect(%StateMachine.change_state.bind(fall_state, "airdash_state"))
+	airdash_state.glide.connect(%StateMachine.change_state.bind(glide_state, "airdash_state"))
 	
 	fastfall_state.land.connect(%StateMachine.change_state.bind(land_state, "fastfall_state"))
 	fastfall_state.glide.connect(%StateMachine.change_state.bind(glide_state, "fastfall_state"))
@@ -180,6 +182,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			$keishi_new/Armature/Skeleton3D/Cube.rotate_y(twist_input)
 	elif event is InputEventJoypadMotion:
 		camera_mode = CAMERA_MODES.CONTROLLER
+
+func reset_camera():
+	twist_pivot.rotation = Vector3.ZERO
+	pitch_pivot.rotation = Vector3(10, 0, 0)
+	$keishi_new/Armature/Skeleton3D/Cube.rotation.y = 0
 
 #Out of bounds
 func _on_oob_body_entered(_body: Node3D) -> void:

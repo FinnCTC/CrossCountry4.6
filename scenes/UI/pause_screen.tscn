@@ -1,21 +1,162 @@
 [gd_scene format=3 uid="uid://c6lmtrfq8y2rc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xmtkg"]
-font_size = 100
+[ext_resource type="Script" uid="uid://bk5pfvpe51wcn" path="res://scenes/UI/pause_screen.gd" id="1_icfcd"]
+[ext_resource type="Texture2D" uid="uid://bj3v2tfu31an0" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_brown.png" id="1_k6jvu"]
+[ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="2_icfcd"]
+[ext_resource type="Texture2D" uid="uid://6x2qjj5n0gi4" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_grey.png" id="3_bdp6l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq7uk"]
+font = ExtResource("2_icfcd")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_thj4g"]
+font = ExtResource("2_icfcd")
 
 [node name="PauseScreen" type="Control" unique_id=579878963]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_icfcd")
 
-[node name="Label" type="Label" parent="." unique_id=829420933]
-layout_mode = 0
-offset_right = 956.0
-offset_bottom = 549.0
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1668396741]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.875
+offset_top = -197.0
+offset_right = 338.875
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k6jvu")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=212654591]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=818382667]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=306476034]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=909121273]
+layout_mode = 2
+size_flags_vertical = 1
 text = "PAUSE"
-label_settings = SubResource("LabelSettings_xmtkg")
+label_settings = SubResource("LabelSettings_rq7uk")
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=855947274]
+layout_mode = 2
+text = "
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1154981394]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResumeButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2089725704]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_bdp6l")
+texture_pressed = ExtResource("3_bdp6l")
+texture_hover = ExtResource("3_bdp6l")
+texture_disabled = ExtResource("3_bdp6l")
+texture_focused = ExtResource("3_bdp6l")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" unique_id=967503509]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESUME"
+label_settings = SubResource("LabelSettings_thj4g")
+
+[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=937091116]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_bdp6l")
+texture_pressed = ExtResource("3_bdp6l")
+texture_hover = ExtResource("3_bdp6l")
+texture_disabled = ExtResource("3_bdp6l")
+texture_focused = ExtResource("3_bdp6l")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" unique_id=1698362145]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESTART"
+label_settings = SubResource("LabelSettings_thj4g")
+
+[node name="ExitButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2008780491]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_bdp6l")
+texture_pressed = ExtResource("3_bdp6l")
+texture_hover = ExtResource("3_bdp6l")
+texture_disabled = ExtResource("3_bdp6l")
+texture_focused = ExtResource("3_bdp6l")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ExitButton" unique_id=832123745]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_thj4g")
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ExitButton" to="." method="_on_exit_button_pressed"]

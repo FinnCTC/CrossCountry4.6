@@ -26,9 +26,12 @@ fog_aerial_perspective = 0.732
 fog_height = -679.23
 fog_height_density = 0.0245
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbn2f"]
+size = Vector3(24, 1, 4)
+
 [node name="TestLevel" type="Node3D" unique_id=1587933933]
 script = ExtResource("1_opthk")
-grade_times = null
+grade_times = Array[int]([10, 20, 30])
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1768045388]
@@ -200,9 +203,14 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3860196, 4.7683716e-07, 11.566076)
 
 [node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=1670379384]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=1475259647]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0.5, 30, -58.050007)
+shape = SubResource("BoxShape3D_dbn2f")
 
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_xfuqb")]
 transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.9998409, 0, 13.755629, 0)
 
-[node name="UI" parent="Dependancies" unique_id=446973243 instance=ExtResource("5_dbn2f")]
+[node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("5_dbn2f")]
 mouse_filter = 1
