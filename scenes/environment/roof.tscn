@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dv34itbcmj8rj"]
+
+[ext_resource type="PackedScene" uid="uid://b2kawticnuwuv" path="res://scenes/environment/ceiling.tscn" id="1_w4jck"]
+
+[node name="Roof" type="Node3D" unique_id=1960992729]
+
+[node name="Ceiling" parent="." unique_id=1443792763 instance=ExtResource("1_w4jck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Ceiling2" parent="." unique_id=1641994027 instance=ExtResource("1_w4jck")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1)

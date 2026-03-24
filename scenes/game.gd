@@ -2,17 +2,17 @@ extends Node3D
 
 @export var beginning_scene: PackedScene
 
-var current_scene: Node3D
+var current_scene: Node
 
 func _ready() -> void:
 	change_scene(beginning_scene)
 
 func start_game():
-	pass
+	enter_level(1)
 
 func enter_level(level_number: int):
-	var level_filepath = "res://scenes/levels/level" + str(level_number)
-	var level = await load(level_filepath) 
+	var level_filepath = "res://scenes/levels/level_" + str(level_number) + ".tscn"
+	var level = await load(level_filepath)
 	change_scene(level)
 
 func change_scene(new_scene: PackedScene) -> void:
