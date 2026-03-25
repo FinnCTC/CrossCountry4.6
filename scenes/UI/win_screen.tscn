@@ -9,19 +9,18 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ssjgs"]
 font = ExtResource("2_fx832")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5w7kg"]
-texture = ExtResource("4_d3r46")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6oyed"]
-texture = ExtResource("4_d3r46")
+[sub_resource type="LabelSettings" id="LabelSettings_fx832"]
+font = ExtResource("2_fx832")
 
 [node name="WinScreen" type="Control" unique_id=1721008017]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_fx832")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2040091985]
@@ -100,21 +99,87 @@ theme_override_constants/margin_bottom = 18
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonNextLevel" type="Button" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=964047684]
+[node name="NextLevelButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=674710766]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_5w7kg")
-text = "Next Level"
+texture_normal = ExtResource("4_d3r46")
+texture_pressed = ExtResource("4_d3r46")
+texture_hover = ExtResource("4_d3r46")
+texture_disabled = ExtResource("4_d3r46")
+texture_focused = ExtResource("4_d3r46")
+stretch_mode = 0
 
-[node name="ButtonLevelSelect" type="Button" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1714060486]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_6oyed")
-text = "Level Select"
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/VBoxContainer/NextLevelButton" unique_id=887226422]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "NEXT LEVEL"
+label_settings = SubResource("LabelSettings_fx832")
 
-[node name="ButtonExit" type="Button" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=1159705369]
+[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=730941433]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_6oyed")
-text = "Exit
-"
+texture_normal = ExtResource("4_d3r46")
+texture_pressed = ExtResource("4_d3r46")
+texture_hover = ExtResource("4_d3r46")
+texture_disabled = ExtResource("4_d3r46")
+texture_focused = ExtResource("4_d3r46")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/VBoxContainer/LevelSelectButton" unique_id=595344927]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LEVEL SELECT"
+label_settings = SubResource("LabelSettings_fx832")
+
+[node name="ExitButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=899348863]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+texture_normal = ExtResource("4_d3r46")
+texture_pressed = ExtResource("4_d3r46")
+texture_hover = ExtResource("4_d3r46")
+texture_disabled = ExtResource("4_d3r46")
+texture_focused = ExtResource("4_d3r46")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/VBoxContainer/ExitButton" unique_id=1552964202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT GAME"
+label_settings = SubResource("LabelSettings_fx832")
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer2/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer2/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer2/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

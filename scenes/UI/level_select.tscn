@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cqexxtsb6j8xa"]
+
+[ext_resource type="Script" uid="uid://e43t6p0g220l" path="res://scenes/UI/level_select.gd" id="1_hoiyx"]
+[ext_resource type="PackedScene" uid="uid://g67mqq0ee5vo" path="res://scenes/UI/level_button.tscn" id="2_0i6e4"]
+
+[node name="LevelSelect" type="Control" unique_id=961971189]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoiyx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=611307109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.615, 0.82, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=1262797859]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer" unique_id=1317545026]
+layout_mode = 2
+color = Color(0.23, 0.23, 0.23, 0.63529414)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/ColorRect" unique_id=1044118784]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer" unique_id=55019445]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer" unique_id=342711618 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 1
+
+[node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer" unique_id=1413723822 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 2
+
+[node name="LevelButton3" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer" unique_id=26209293 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer" unique_id=213274320]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer2" unique_id=1811198648 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 4
+
+[node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer2" unique_id=1911718531 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 5

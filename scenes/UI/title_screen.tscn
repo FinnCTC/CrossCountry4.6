@@ -62,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://dx4b8btgqj00d" path="res://sprites/UI/title/title/titlescreen0058.png" id="57_dj7s7"]
 [ext_resource type="Texture2D" uid="uid://mech60au5ljl" path="res://sprites/UI/title/title/titlescreen0059.png" id="58_f4p0g"]
 [ext_resource type="Texture2D" uid="uid://5ow1xmckn1in" path="res://sprites/UI/title/title/titlescreen0060.png" id="59_fref5"]
+[ext_resource type="Texture2D" uid="uid://bjnvkbvpoir7k" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_brown_close.png" id="63_e5xqj"]
 
 [sub_resource type="Animation" id="Animation_3hlyq"]
 length = 0.001
@@ -168,4 +169,21 @@ grow_vertical = 2
 text = "START "
 label_settings = SubResource("LabelSettings_rvnbb")
 
+[node name="ExitButton" type="TextureButton" parent="." unique_id=148347261]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 47.0
+grow_horizontal = 0
+texture_normal = ExtResource("63_e5xqj")
+texture_pressed = ExtResource("63_e5xqj")
+texture_hover = ExtResource("63_e5xqj")
+texture_disabled = ExtResource("63_e5xqj")
+texture_focused = ExtResource("63_e5xqj")
+stretch_mode = 0
+
 [connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

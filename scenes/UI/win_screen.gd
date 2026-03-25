@@ -1,12 +1,22 @@
 extends Control
 class_name WinScreen
 
+@onready var parent = $".."
+
 var grade_times
+
+func _ready() -> void:
+	mouse_filter = Control.MOUSE_FILTER_PASS
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	%NextLevelButton.pressed.connect(_on_next_level_button_pressed)
+	%LevelSelectButton.pressed.connect(_on_level_select_button_pressed)
+	%ExitButton.pressed.connect(_on_exit_button_pressed)
 
 func display_win(seconds_taken: int):
 	grade_times = $"..".grade_times
 	display_time(seconds_taken)
 	print(get_rank(seconds_taken))
+	mouse_filter = Control.MOUSE_FILTER_STOP
 
 func display_time(seconds_taken: int):
 	var time = Global.seconds_to_mintues(seconds_taken)
@@ -22,3 +32,12 @@ func get_rank(seconds_taken: int) -> String:
 		return "C"
 	else:
 		return "D"
+
+func _on_next_level_button_pressed() -> void:
+	print("Next level")
+
+func _on_level_select_button_pressed() -> void:
+	print("Level select")
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()

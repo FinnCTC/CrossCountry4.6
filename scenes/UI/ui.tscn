@@ -22,6 +22,10 @@ grow_vertical = 2
 script = ExtResource("1_7e3k0")
 current_ui = NodePath("LevelUI")
 
+[node name="WinScreen" parent="." unique_id=1721008017 instance=ExtResource("6_m41qk")]
+process_mode = 1
+layout_mode = 1
+
 [node name="LevelUI" type="Control" parent="." unique_id=1043182713]
 process_mode = 1
 layout_mode = 1
@@ -79,12 +83,6 @@ metadata/_custom_type_script = "uid://bwld6mmfx0ir3"
 
 [node name="Timer" type="Timer" parent="LevelUI/CountUpTimer" unique_id=1536221329]
 autostart = true
-
-[node name="WinScreen" parent="." unique_id=1721008017 instance=ExtResource("6_m41qk")]
-process_mode = 1
-visible = false
-layout_mode = 1
-mouse_filter = 1
 
 [node name="PauseScreen" parent="." unique_id=579878963 instance=ExtResource("8_tpnoy")]
 visible = false
