@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dijt581tbbf2a"]
+
+[ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_j2425"]
+[ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_ra442"]
+[ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_fiq81"]
+[ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="4_fiq81"]
+[ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="5_ibugp"]
+[ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="6_8qukl"]
+[ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="7_3p04p"]
+[ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="8_8qukl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l37oo"]
+size = Vector3(24, 2.3972168, 0.6203613)
+
+[node name="Level2" type="Node3D" unique_id=1996429483]
+script = ExtResource("1_j2425")
+metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
+
+[node name="Dependancies" type="Node3D" parent="." unique_id=260811354]
+
+[node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=1043974778]
+
+[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=1435573131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.341755, 42.350456)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=753465987]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -4.411442, -15.447895)
+shape = SubResource("BoxShape3D_l37oo")
+
+[node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_ra442")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
+
+[node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("3_fiq81")]
+mouse_filter = 1
+
+[node name="Course" type="Node3D" parent="." unique_id=132831594]
+
+[node name="ClosedCorridor" parent="Course" unique_id=1446047497 instance=ExtResource("4_fiq81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5205493)
+
+[node name="LavaJumpRoom" type="Node3D" parent="Course" unique_id=1989403483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.9)
+
+[node name="Floor" parent="Course/LavaJumpRoom" unique_id=584148717 instance=ExtResource("5_ibugp")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4.4539437, 0, 0, -0.051115036)
+
+[node name="Wall" parent="Course/LavaJumpRoom" unique_id=1312718944 instance=ExtResource("6_8qukl")]
+transform = Transform3D(-4.152582e-07, 0, 1.5, 0, 6.5, 0, -9.5, 0, -6.556708e-08, -4, 10, 5.5820274)
+
+[node name="Wall3" parent="Course/LavaJumpRoom" unique_id=737210080 instance=ExtResource("6_8qukl")]
+transform = Transform3D(-3.934025e-07, 0, 1.5, 0, 6.5, 0, -9, 0, -6.556708e-08, 4, 10, 5.5820274)
+
+[node name="Roof" parent="Course/LavaJumpRoom" unique_id=1960992729 instance=ExtResource("7_3p04p")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 5.5, 0, 12.649, 5.5820274)
+
+[node name="Wall2" parent="Course/LavaJumpRoom" unique_id=1384015081 instance=ExtResource("6_8qukl")]
+transform = Transform3D(3.5, 0, 0, 0, 6.5, 0, 0, 0, 1, 0, 10, 16.082027)
+
+[node name="Wall4" parent="Course/LavaJumpRoom" unique_id=153855262 instance=ExtResource("6_8qukl")]
+transform = Transform3D(3.5, 0, 0, 0, 4.1373754, 0, 0, 0, 1, 0, 11.00066, -4.9179726)
+
+[node name="Floor2" parent="Course/LavaJumpRoom" unique_id=504281745 instance=ExtResource("5_ibugp")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4.242915, 0, 0, 11.747585)
+
+[node name="Hazard" parent="Course/LavaJumpRoom" unique_id=778791349 instance=ExtResource("8_8qukl")]
+transform = Transform3D(1.5399048, 0, 0, 0, 1, 0, 0, 0, 0.7479135, 0, -0.37230766, 6.0911217)

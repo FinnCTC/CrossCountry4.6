@@ -131,7 +131,7 @@ grow_vertical = 2
 text = "RESTART"
 label_settings = SubResource("LabelSettings_thj4g")
 
-[node name="ExitButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2008780491]
+[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2008780491]
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
@@ -141,7 +141,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ExitButton" unique_id=832123745]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/LevelSelectButton" unique_id=832123745]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,9 +154,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "EXIT"
+text = "LEVEL SELECT"
 label_settings = SubResource("LabelSettings_thj4g")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

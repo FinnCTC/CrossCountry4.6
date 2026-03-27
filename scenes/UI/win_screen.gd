@@ -8,9 +8,6 @@ var grade_times
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	%NextLevelButton.pressed.connect(_on_next_level_button_pressed)
-	%LevelSelectButton.pressed.connect(_on_level_select_button_pressed)
-	%ExitButton.pressed.connect(_on_exit_button_pressed)
 
 func display_win(seconds_taken: int):
 	grade_times = $"..".grade_times

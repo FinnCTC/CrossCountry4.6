@@ -7,6 +7,7 @@ class_name Game
 var current_scene: Node
 
 func _ready() -> void:
+	Global.game = self
 	change_scene(beginning_scene)
 
 func start_game():
@@ -27,3 +28,12 @@ func change_scene(new_scene: PackedScene) -> void:
 	
 	current_scene = new_scene_instance
 	add_child(current_scene)
+
+func change_common_scene(new_scene_name: String) -> void:
+	match new_scene_name:
+		"level_select":
+			change_scene(level_select_screen)
+		"title_screen":
+			change_scene(beginning_scene)
+		_:
+			print("common scene not found")

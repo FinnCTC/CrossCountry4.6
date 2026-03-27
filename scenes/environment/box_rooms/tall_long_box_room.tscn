@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d3kc6ck4ejqhe"]
+
+[ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="1_6qx6c"]
+[ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="2_pqf3x"]
+[ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="3_eqtau"]
+
+[node name="TallLongBoxRoom" type="Node3D" unique_id=295205933]
+
+[node name="Floor" parent="." unique_id=584148717 instance=ExtResource("1_6qx6c")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 11, 0, 0, 0)
+
+[node name="Wall" parent="." unique_id=1312718944 instance=ExtResource("2_pqf3x")]
+transform = Transform3D(-4.152582e-07, 0, 1.5, 0, 6.5, 0, -9.5, 0, -6.556708e-08, -4, 10, 0)
+
+[node name="Wall3" parent="." unique_id=369951329 instance=ExtResource("2_pqf3x")]
+transform = Transform3D(-3.934025e-07, 0, 1.5, 0, 6.5, 0, -9, 0, -6.556708e-08, 4, 10, 0)
+
+[node name="Roof" parent="." unique_id=1960992729 instance=ExtResource("3_eqtau")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 5.5, 0, 12.649, 0)
+
+[node name="Wall2" parent="." unique_id=410510211 instance=ExtResource("2_pqf3x")]
+transform = Transform3D(3.5, 0, 0, 0, 6.5, 0, 0, 0, 1, 0, 10, 10.5)
+
+[node name="Wall4" parent="." unique_id=496562382 instance=ExtResource("2_pqf3x")]
+transform = Transform3D(3.5, 0, 0, 0, 6.5, 0, 0, 0, 1, 0, 10, -10.5)

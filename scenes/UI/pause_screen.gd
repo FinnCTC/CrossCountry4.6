@@ -19,5 +19,6 @@ func _on_restart_button_pressed() -> void:
 	$"..".restart_level()
 	unpause()
 
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+func _on_level_select_button_pressed() -> void:
+	get_tree().paused = false
+	Global.game.show_level_select()
