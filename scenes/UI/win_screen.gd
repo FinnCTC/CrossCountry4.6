@@ -12,7 +12,6 @@ func _ready() -> void:
 func display_win(seconds_taken: int):
 	grade_times = $"..".grade_times
 	display_time(seconds_taken)
-	print(get_rank(seconds_taken))
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 func display_time(seconds_taken: int):
@@ -31,10 +30,10 @@ func get_rank(seconds_taken: int) -> String:
 		return "D"
 
 func _on_next_level_button_pressed() -> void:
-	print("Next level")
+	Global.level_manager.enter_next_level()
 
 func _on_level_select_button_pressed() -> void:
-	print("Level select")
+	Global.game.change_common_scene("level_select")
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()

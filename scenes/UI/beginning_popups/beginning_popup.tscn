@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://tmuvbeeo5xqh"]
+
+[ext_resource type="Script" uid="uid://c5uu84qj1ddly" path="res://scenes/UI/beginning_popups/beginning_popup.gd" id="1_gfl33"]
+[ext_resource type="Texture2D" uid="uid://ddbu4lfpg7awn" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_grey_red.png" id="2_cdlss"]
+[ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="3_ergoy"]
+[ext_resource type="Texture2D" uid="uid://camwsey7tctgf" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_red.png" id="4_07av3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nun72"]
+font = ExtResource("3_ergoy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rapcq"]
+font = ExtResource("3_ergoy")
+
+[node name="BeginningPopup" type="Control" unique_id=1566526780]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gfl33")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1773490621]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -143.5
+offset_right = 202.5
+offset_bottom = 143.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cdlss")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=1437593131]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_right = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=895705824]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1488002930]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "PRESS THE BUTTON TO DO THE THING BUDDY FRIEND PAL"
+label_settings = SubResource("LabelSettings_nun72")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1093526296]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("4_07av3")
+texture_pressed = ExtResource("4_07av3")
+texture_hover = ExtResource("4_07av3")
+texture_disabled = ExtResource("4_07av3")
+texture_focused = ExtResource("4_07av3")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/ContinueButton" unique_id=1393843320]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONTINUE"
+label_settings = SubResource("LabelSettings_rapcq")

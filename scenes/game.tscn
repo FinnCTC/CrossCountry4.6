@@ -3,8 +3,12 @@
 [ext_resource type="Script" uid="uid://p0n7eoygab0y" path="res://scenes/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://boafbjo4mvrbe" path="res://scenes/UI/title_screen.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cqexxtsb6j8xa" path="res://scenes/UI/level_select.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://cxn036on2pi1a" path="res://scenes/level_manager.gd" id="4_lbhrr"]
 
 [node name="Game" type="Node3D" unique_id=685025564]
 script = ExtResource("1_uwrxv")
 beginning_scene = ExtResource("2_yqjtg")
 level_select_screen = ExtResource("3_lnu2h")
+
+[node name="LevelManager" type="Node" parent="." unique_id=1984893215]
+script = ExtResource("4_lbhrr")

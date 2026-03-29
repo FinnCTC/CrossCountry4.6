@@ -9,6 +9,8 @@ var player_position := Vector3.ZERO
 
 var game: Game
 
+var level_manager: LevelManager
+
 var current_level: Node3D
 
 func absolute_is_greater(num1: float, num2: float) -> bool:

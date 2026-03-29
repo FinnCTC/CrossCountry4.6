@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_j2425"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_ra442"]
 [ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_fiq81"]
+[ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_3p04p"]
 [ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="4_fiq81"]
 [ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="5_ibugp"]
 [ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="6_8qukl"]
@@ -31,8 +32,13 @@ shape = SubResource("BoxShape3D_l37oo")
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_ra442")]
 transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
 
-[node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("3_fiq81")]
+[node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_fiq81")]
 mouse_filter = 1
+beginning_popup = NodePath("BeginningPopup")
+
+[node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_3p04p")]
+layout_mode = 1
+message = "THERE IS LAVA IN THIS LEVEL! DON'T TOUCH IT OR YOU'LL BE SENT BACK TO THE START!"
 
 [node name="Course" type="Node3D" parent="." unique_id=132831594]
 

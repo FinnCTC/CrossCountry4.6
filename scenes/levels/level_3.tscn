@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cgb6adpsy5h27"]
+
+[ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_o8c3j"]
+[ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_0qepi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmg3e"]
+size = Vector3(24, 2.3972168, 0.6203613)
+
+[node name="Level3" type="Node3D" unique_id=1167037429]
+script = ExtResource("1_o8c3j")
+metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
+
+[node name="Dependancies" type="Node3D" parent="." unique_id=1992326565]
+
+[node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=471629985]
+
+[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=848384520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.341755, 42.350456)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=1979379642]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -0.14798546, -1.1483536)
+shape = SubResource("BoxShape3D_fmg3e")
+
+[node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_0ljxa")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
+
+[node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("3_0qepi")]
+mouse_filter = 1

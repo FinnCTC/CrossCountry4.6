@@ -11,15 +11,8 @@ func _ready() -> void:
 	change_scene(beginning_scene)
 
 func start_game():
-	show_level_select()
-
-func show_level_select():
+	change_common_scene("level_select")
 	change_scene(level_select_screen)
-
-func enter_level(level_number: int):
-	var level_filepath = "res://scenes/levels/level_" + str(level_number) + ".tscn"
-	var level = await load(level_filepath)
-	change_scene(level)
 
 func change_scene(new_scene: PackedScene) -> void:
 	var new_scene_instance = new_scene.instantiate()
@@ -32,6 +25,7 @@ func change_scene(new_scene: PackedScene) -> void:
 func change_common_scene(new_scene_name: String) -> void:
 	match new_scene_name:
 		"level_select":
+			get_tree().paused = false
 			change_scene(level_select_screen)
 		"title_screen":
 			change_scene(beginning_scene)

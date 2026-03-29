@@ -21,4 +21,4 @@ func _on_restart_button_pressed() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	get_tree().paused = false
-	Global.game.show_level_select()
+	Global.game.change_common_scene("level_select")
