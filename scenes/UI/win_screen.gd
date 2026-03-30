@@ -35,5 +35,6 @@ func _on_next_level_button_pressed() -> void:
 func _on_level_select_button_pressed() -> void:
 	Global.game.change_common_scene("level_select")
 
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+func _on_restart_button_pressed():
+	get_tree().paused = false
+	parent.restart_level()

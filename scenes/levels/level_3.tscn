@@ -3,9 +3,35 @@
 [ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_o8c3j"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_0qepi"]
+[ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="4_fmg3e"]
+[ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_pimnq"]
+[ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="5_fkk1g"]
+[ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="6_ugcn1"]
+[ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="7_pimnq"]
+[ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="8_ugcn1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fmg3e"]
-size = Vector3(24, 2.3972168, 0.6203613)
+size = Vector3(24, 5.7391357, 0.6203613)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pimnq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_2bnyt"]
+sky_material = SubResource("ProceduralSkyMaterial_pimnq")
+
+[sub_resource type="Environment" id="Environment_n6eey"]
+background_mode = 2
+sky = SubResource("Sky_2bnyt")
+ambient_light_color = Color(0.8919199, 0.7867652, 0.9385143, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.57716626, 0.56136537, 0.3435307, 1)
+fog_light_energy = 0.51
+fog_density = 0.0045
+fog_aerial_perspective = 0.732
+fog_height = -679.23
+fog_height_density = 0.0245
 
 [node name="Level3" type="Node3D" unique_id=1167037429]
 script = ExtResource("1_o8c3j")
@@ -20,11 +46,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.341755, 42.350456)
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=1979379642]
-transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -0.14798546, -1.1483536)
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -1.444818, -4.4881973)
 shape = SubResource("BoxShape3D_fmg3e")
 
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_0ljxa")]
 transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
 
-[node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("3_0qepi")]
+[node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_0qepi")]
 mouse_filter = 1
+beginning_popup = NodePath("BeginningPopup")
+
+[node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_pimnq")]
+layout_mode = 1
+message = "YOU'LL NEED TO GLIDE OVER THIS LAVA TO GET PAST! JUMP AND THEN HOLD JUMP MIDAIR TO GLIDE."
+
+[node name="Course" type="Node3D" parent="." unique_id=267904272]
+
+[node name="ClosedCorridor" parent="Course" unique_id=1446047497 instance=ExtResource("4_fmg3e")]
+
+[node name="LongPitCorridor" type="Node3D" parent="Course" unique_id=848276946]
+
+[node name="Floor" parent="Course/LongPitCorridor" unique_id=584148717 instance=ExtResource("5_fkk1g")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 17.513771, 0, 0, 23)
+
+[node name="Wall" parent="Course/LongPitCorridor" unique_id=1312718944 instance=ExtResource("6_ugcn1")]
+transform = Transform3D(-6.556708e-07, 0, 1.5, 0, 6.5, 0, -15, 0, -6.556708e-08, -4, 10, 23)
+
+[node name="Wall3" parent="Course/LongPitCorridor" unique_id=587342438 instance=ExtResource("6_ugcn1")]
+transform = Transform3D(-6.556708e-07, 0, 1.5, 0, 6.5, 0, -15, 0, -6.556708e-08, 4, 10, 23)
+
+[node name="Roof" parent="Course/LongPitCorridor" unique_id=1960992729 instance=ExtResource("7_pimnq")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 8.664252, 0, 12.5, 23)
+
+[node name="Wall4" parent="Course/LongPitCorridor" unique_id=810657885 instance=ExtResource("6_ugcn1")]
+transform = Transform3D(3.5, 0, 0, 0, 6.3932877, 0, 0, 0, 1, 0, 9.793407, 40)
+
+[node name="Wall5" parent="Course/LongPitCorridor" unique_id=50734072 instance=ExtResource("6_ugcn1")]
+transform = Transform3D(3.5, 0, 0, 0, 1.33, 0, 0, 0, 1, 0, 12, 6)
+
+[node name="Hazard" parent="Course/LongPitCorridor" unique_id=778791349 instance=ExtResource("8_ugcn1")]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 23)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2070125181]
+environment = SubResource("Environment_n6eey")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909776111]
+transform = Transform3D(-0.8660254, -0.2649597, -0.42402408, 0, -0.84804803, 0.5299193, -0.50000006, 0.45892358, 0.73443115, 0, 0, 0)
+shadow_enabled = true

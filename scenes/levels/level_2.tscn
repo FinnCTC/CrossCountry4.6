@@ -13,6 +13,26 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_l37oo"]
 size = Vector3(24, 2.3972168, 0.6203613)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3p04p"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_xgnsd"]
+sky_material = SubResource("ProceduralSkyMaterial_3p04p")
+
+[sub_resource type="Environment" id="Environment_qsp8v"]
+background_mode = 2
+sky = SubResource("Sky_xgnsd")
+ambient_light_color = Color(0.8919199, 0.7867652, 0.9385143, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.57716626, 0.56136537, 0.3435307, 1)
+fog_light_energy = 0.51
+fog_density = 0.0045
+fog_aerial_perspective = 0.732
+fog_height = -679.23
+fog_height_density = 0.0245
+
 [node name="Level2" type="Node3D" unique_id=1996429483]
 script = ExtResource("1_j2425")
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
@@ -71,3 +91,10 @@ transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4.242915, 0, 0, 11.747585)
 
 [node name="Hazard" parent="Course/LavaJumpRoom" unique_id=778791349 instance=ExtResource("8_8qukl")]
 transform = Transform3D(1.5399048, 0, 0, 0, 1, 0, 0, 0, 0.7479135, 0, -0.37230766, 6.0911217)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1185037831]
+environment = SubResource("Environment_qsp8v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1473127631]
+transform = Transform3D(-0.8660254, -0.2649597, -0.42402408, 0, -0.84804803, 0.5299193, -0.50000006, 0.45892358, 0.73443115, 0, 0, 0)
+shadow_enabled = true

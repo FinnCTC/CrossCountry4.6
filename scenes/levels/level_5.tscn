@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://mm0emis3eq1l"]
+
+[ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_r1vs7"]
+[ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_fi56y"]
+[ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_hldbq"]
+[ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_fsnos"]
+[ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_mxx4w"]
+[ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="6_mxx4w"]
+[ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="7_vvoq0"]
+[ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="8_tqnj0"]
+[ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="9_vvoq0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvoq0"]
+size = Vector3(29.797363, 1.0477905, 5.127075)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mxx4w"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vvoq0"]
+sky_material = SubResource("ProceduralSkyMaterial_mxx4w")
+
+[sub_resource type="Environment" id="Environment_tqnj0"]
+background_mode = 2
+sky = SubResource("Sky_vvoq0")
+ambient_light_color = Color(0.8919199, 0.7867652, 0.9385143, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.57716626, 0.56136537, 0.3435307, 1)
+fog_light_energy = 0.51
+fog_density = 0.0045
+fog_aerial_perspective = 0.732
+fog_height = -679.23
+fog_height_density = 0.0245
+
+[node name="Level5" type="Node3D" unique_id=935907978]
+script = ExtResource("1_r1vs7")
+metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
+
+[node name="Dependancies" type="Node3D" parent="." unique_id=1592043584]
+
+[node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=1455054223]
+
+[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=1242652472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.944836, 42.350456)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=2107106409]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 5.747055, -5.9080544, -20.509222)
+shape = SubResource("BoxShape3D_vvoq0")
+
+[node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_fi56y")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
+
+[node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_hldbq")]
+mouse_filter = 1
+beginning_popup = NodePath("BeginningPopup")
+
+[node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_fsnos")]
+layout_mode = 1
+message = "YOUR FINAL MOVE IS THE FAST FALL. PRESS LB MIDAIR TO PLUNGE DOWNWARD."
+
+[node name="Course" type="Node3D" parent="." unique_id=1338140909]
+
+[node name="ClosedCorridor" parent="Course" unique_id=1446047497 instance=ExtResource("5_mxx4w")]
+
+[node name="DropperRoom" type="Node3D" parent="Course" unique_id=498533540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
+[node name="Floor" parent="Course/DropperRoom" unique_id=584148717 instance=ExtResource("6_mxx4w")]
+transform = Transform3D(12, 0, 0, 0, 2, 0, 0, 0, 12, 0, -21, 0)
+
+[node name="Wall" parent="Course/DropperRoom" unique_id=1312718944 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(-4.371139e-07, 0, 1.5, 0, 20, 0, -10, 0, -6.556708e-08, -12, 10, 0)
+
+[node name="Wall3" parent="Course/DropperRoom" unique_id=1408784466 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(-4.371139e-07, 0, 1.5, 0, 20, 0, -10, 0, -6.556708e-08, 12, 10, 0)
+
+[node name="Roof" parent="Course/DropperRoom" unique_id=1960992729 instance=ExtResource("8_tqnj0")]
+transform = Transform3D(12, 0, 0, 0, 9, 0, 0, 0, 6, 0, 18, 0)
+
+[node name="Wall2" parent="Course/DropperRoom" unique_id=1582157580 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, 12)
+
+[node name="Wall4" parent="Course/DropperRoom" unique_id=1625343773 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(10, 0, 0, 0, 11, 0, 0, 0, 1, 0, -3.6220703, -12)
+
+[node name="Wall5" parent="Course/DropperRoom" unique_id=335781263 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 1, 0, 17, -12)
+
+[node name="Wall6" parent="Course/DropperRoom" unique_id=1205454315 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(3.1, 0, 0, 0, 5, 0, 0, 0, 1, 8, 8, -12)
+
+[node name="Wall7" parent="Course/DropperRoom" unique_id=947474871 instance=ExtResource("7_vvoq0")]
+transform = Transform3D(3.1, 0, 0, 0, 5, 0, 0, 0, 1, -8, 8, -12)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Course/DropperRoom" unique_id=1127889394]
+transform = Transform3D(1, 0, 0, 0, -0.54959166, 0.8354335, 0, -0.8354335, -0.54959166, 0, 16, 0)
+light_color = Color(1, 0.38431373, 1, 1)
+light_energy = 50.0
+spot_range = 51.0
+spot_angle = 68.12669
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Course/DropperRoom" unique_id=578015980]
+transform = Transform3D(1, 0, 0, 0, 0.28777838, 0.95769703, 0, -0.95769703, 0.28777838, 0, 16, 0)
+light_color = Color(0, 0.5170002, 0.94, 1)
+light_energy = 50.0
+spot_range = 51.0
+spot_angle = 68.12669
+
+[node name="LavaRing" type="Node3D" parent="Course/DropperRoom" unique_id=1430079652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.44342, 0)
+
+[node name="Hazard2" parent="Course/DropperRoom/LavaRing" unique_id=778791349 instance=ExtResource("9_vvoq0")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 5, -7, 0, 0)
+
+[node name="Hazard3" parent="Course/DropperRoom/LavaRing" unique_id=567198244 instance=ExtResource("9_vvoq0")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 5, 7, 0, 0)
+
+[node name="Hazard5" parent="Course/DropperRoom/LavaRing" unique_id=189325917 instance=ExtResource("9_vvoq0")]
+transform = Transform3D(-8.7406534e-08, 0.013630599, -0.9999071, 1.1916249e-09, 0.9999071, 0.013630599, 2, -5.540013e-14, -4.3707328e-08, 0, -0.004, 7)
+
+[node name="Hazard6" parent="Course/DropperRoom/LavaRing" unique_id=1392841910 instance=ExtResource("9_vvoq0")]
+transform = Transform3D(-8.7406534e-08, 0.013630599, -0.9999071, 1.1916249e-09, 0.9999071, 0.013630599, 2, -5.540013e-14, -4.3707328e-08, 0, -0.004, -7)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857435040]
+environment = SubResource("Environment_tqnj0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1360202124]
+transform = Transform3D(-0.8660254, -0.2649597, -0.42402408, 0, -0.84804803, 0.5299193, -0.50000006, 0.45892358, 0.73443115, 0, 0, 0)
+shadow_enabled = true

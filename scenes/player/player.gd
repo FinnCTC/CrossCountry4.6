@@ -139,9 +139,6 @@ func _process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, 0, friction * delta)
 	velocity.z = move_toward(velocity.z, 0, friction * delta)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
 	
 	#CAMERA
 	

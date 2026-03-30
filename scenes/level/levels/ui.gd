@@ -9,6 +9,8 @@ class_name UI
 @export var current_ui: Control
 @export var beginning_popup: Control
 
+var level_won: bool = false
+
 func _ready() -> void:
 	if beginning_popup:
 		level_ui.visible = false
@@ -22,10 +24,9 @@ func _ready() -> void:
 		level_ui.visible = true
 		win_screen.visible = false
 		pause_screen.visible = false
-		
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") && level_won == false:
 		if get_tree().paused == false:
 			change_UI("Pause")
 		else:
@@ -49,14 +50,17 @@ func change_UI(ui_name: String):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			win_screen.visible = true
 			get_tree().paused = true
+			level_won = true
 		"pause":
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			pause_screen.visible = true
 			get_tree().paused = true
 
 func restart_level():
+	level_won = false
 	var level: Level = $"../.."
 	level.initialize_level()
+	change_UI("level")
 
 func on_beginning_popup_closed():
 	change_UI("level")

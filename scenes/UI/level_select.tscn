@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://e43t6p0g220l" path="res://scenes/UI/level_select.gd" id="1_hoiyx"]
 [ext_resource type="PackedScene" uid="uid://g67mqq0ee5vo" path="res://scenes/UI/level_button.tscn" id="2_0i6e4"]
+[ext_resource type="Texture2D" uid="uid://bjnvkbvpoir7k" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_brown_close.png" id="3_hoiyx"]
 
 [node name="LevelSelect" type="Control" unique_id=961971189]
 layout_mode = 3
@@ -73,3 +74,20 @@ level_number = 4
 [node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer2" unique_id=1911718531 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 5
+
+[node name="ExitButton" type="TextureButton" parent="ColorRect" unique_id=1674606337]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 47.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_hoiyx")
+texture_pressed = ExtResource("3_hoiyx")
+texture_hover = ExtResource("3_hoiyx")
+texture_disabled = ExtResource("3_hoiyx")
+texture_focused = ExtResource("3_hoiyx")
+stretch_mode = 0

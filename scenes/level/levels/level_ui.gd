@@ -1,6 +1,6 @@
 extends Control
 
-@onready var stopwatch = $CountUpTimer
+@onready var stopwatch: CountUpTimer = $CountUpTimer
 @onready var time_label = $NinePatchRect/VBoxContainer/TimeLabel
 
 func _ready() -> void:
@@ -9,3 +9,6 @@ func _ready() -> void:
 func on_stopwatch_time_updated(new_minutes:int, new_seconds:int):
 	var new_seconds_string = Global.format_time(new_minutes, new_seconds)
 	time_label.text = new_seconds_string
+
+func restart_timer():
+	stopwatch.reset()
