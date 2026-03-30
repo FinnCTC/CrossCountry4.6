@@ -13,6 +13,9 @@ func display_win(seconds_taken: int):
 	grade_times = $"..".grade_times
 	display_time(seconds_taken)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	if not Global.level_manager.has_next_level(parent.level_number):
+		%NextLevelButton.visible = false
 
 func display_time(seconds_taken: int):
 	var time = Global.seconds_to_mintues(seconds_taken)

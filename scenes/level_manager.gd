@@ -25,3 +25,11 @@ func enter_next_level():
 func get_current_level_number() -> int:
 	var current_level_number = current_level_name[-1]
 	return int(current_level_number)
+
+func has_next_level(level_number: int) -> bool:
+	var level_filepath = "res://scenes/levels/level_" + str(level_number + 1) + ".tscn"
+	var level_exists = ResourceLoader.exists(level_filepath)
+	if level_exists:
+		return true
+	else:
+		return false

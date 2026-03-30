@@ -35,6 +35,7 @@ fog_height_density = 0.0245
 
 [node name="Level_4" type="Node3D" unique_id=4800573]
 script = ExtResource("1_06474")
+level_number = 4
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
 [node name="Dependancies" type="Node3D" parent="." unique_id=404632431]

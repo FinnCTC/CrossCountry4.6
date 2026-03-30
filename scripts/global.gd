@@ -28,6 +28,8 @@ func format_time(minutes: int, seconds:int) -> String:
 	var seconds_string = ""
 	if seconds < 10:
 		seconds_string = "0" + str(seconds)
+	else:
+		seconds_string = str(seconds)
 	
 	return_string = str(minutes) + ":" + seconds_string
 	

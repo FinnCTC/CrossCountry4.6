@@ -139,16 +139,20 @@ metadata/_custom_type_script = "uid://chn55xwjm0dse"
 
 [node name="TwistPivot" type="Node3D" parent="." unique_id=1736324403]
 unique_name_in_owner = true
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.29297924, 0)
+transform = Transform3D(1.0000001, 0, 3.7252903e-09, 0, 1, 0, -3.7252903e-09, 0, 1.0000001, 0, 0.29297924, 0)
 
 [node name="PitchPivot" type="Node3D" parent="TwistPivot" unique_id=1488661790]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0, 0)
+transform = Transform3D(0.99999523, 0.0030601916, 0.00027097762, -0.0030607558, 0.9999931, 0.0021038502, -0.0002645366, -0.002104676, 0.99999785, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot" unique_id=1565724278]
 unique_name_in_owner = true
-transform = Transform3D(0.9999998, -4.656613e-10, -3.7252903e-09, 4.656613e-10, 0.99999994, 8.940697e-08, 3.7252903e-09, -7.4505806e-08, 0.99999994, 7.042661e-05, 0.9082897, 3.1641653)
+transform = Transform3D(1, 2.401066e-10, -7.450581e-09, 4.838512e-10, 1, 8.1025064e-08, 3.7252903e-09, -7.4505806e-08, 0.9999999, 7.042743e-05, 0.9082897, 3.1641653)
 current = true
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=372025947]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+spring_length = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=820443119]
 transform = Transform3D(1.000004, 0, -2.6077032e-08, 0, 1, 0, 2.6077032e-08, 0, 1.000004, -0.00073925895, 0.1303711, -0.007220632)

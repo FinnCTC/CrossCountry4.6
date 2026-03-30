@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://blkn474skapuj"]
+
+[ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_gfuhv"]
+[ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_7x7cx"]
+[ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_b6i88"]
+[ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_e18e5"]
+[ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_m5qie"]
+[ext_resource type="PackedScene" uid="uid://omma6o4yvpxg" path="res://scenes/environment/corridors/corridor.tscn" id="6_kydov"]
+[ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="7_m5qie"]
+[ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="8_kydov"]
+[ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="9_uwlxl"]
+[ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="10_4wfvb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wfvb"]
+size = Vector3(24, 2.3972168, 0.6203613)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tqv5a"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_xgnsd"]
+sky_material = SubResource("ProceduralSkyMaterial_tqv5a")
+
+[sub_resource type="Environment" id="Environment_ppjov"]
+background_mode = 2
+sky = SubResource("Sky_xgnsd")
+ambient_light_color = Color(0.8919199, 0.7867652, 0.9385143, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.57716626, 0.56136537, 0.3435307, 1)
+fog_light_energy = 0.51
+fog_density = 0.0045
+fog_aerial_perspective = 0.732
+fog_height = -679.23
+fog_height_density = 0.0245
+
+[node name="Level6" type="Node3D" unique_id=1666982582]
+script = ExtResource("1_gfuhv")
+level_number = 6
+metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
+
+[node name="Dependancies" type="Node3D" parent="." unique_id=53301084]
+
+[node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=1761115026]
+
+[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=216022184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.658245, 42.350456)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=690037010]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -0.14798546, -1.1483536)
+shape = SubResource("BoxShape3D_4wfvb")
+
+[node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_7x7cx")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
+
+[node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_b6i88")]
+mouse_filter = 1
+beginning_popup = NodePath("BeginningPopup")
+
+[node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_e18e5")]
+layout_mode = 1
+message = "YOU CAN CHAIN MOVES IN THE AIR! THE BEST WAY TO BEAT THIS LEVEL IS TO CHAIN THE GLIDE INTO THE AIRDASH. REMEMBER, YOU CAN ONLY DO ONE AIRDASH UNTIL YOU HIT THE GROUND AGAIN."
+
+[node name="Course" type="Node3D" parent="." unique_id=2064585687]
+
+[node name="ClosedCorridor" parent="Course" unique_id=1446047497 instance=ExtResource("5_m5qie")]
+
+[node name="Corridor" parent="Course" unique_id=610430802 instance=ExtResource("6_kydov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4394844, 0, 0, 12)
+
+[node name="LavaDropRoom" type="Node3D" parent="Course" unique_id=1344888446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 26)
+
+[node name="Floor" parent="Course/LavaDropRoom" unique_id=584148717 instance=ExtResource("7_m5qie")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="Wall" parent="Course/LavaDropRoom" unique_id=1312718944 instance=ExtResource("8_kydov")]
+transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 12, 0, -5, 0, -6.556708e-08, -4, 19, 0)
+
+[node name="Wall3" parent="Course/LavaDropRoom" unique_id=175596062 instance=ExtResource("8_kydov")]
+transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 12, 0, -5, 0, -6.556708e-08, 4, 19, 0)
+
+[node name="Wall4" parent="Course/LavaDropRoom" unique_id=1795808310 instance=ExtResource("8_kydov")]
+transform = Transform3D(3.5, 0, 0, 0, 8.5536, 0, -1.9895196e-14, 0, 1.5, 0, 20, 6)
+
+[node name="Roof" parent="Course/LavaDropRoom" unique_id=1960992729 instance=ExtResource("9_uwlxl")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 3, 0, 23.649, 0)
+
+[node name="Wall5" parent="Course/LavaDropRoom" unique_id=752450307 instance=ExtResource("8_kydov")]
+transform = Transform3D(3.5, 0, 8.526513e-15, 0, 7, 0, -1.9895196e-14, 0, 1.5, 0, 11, -5)
+
+[node name="Hazard" parent="Course/LavaDropRoom" unique_id=778791349 instance=ExtResource("10_4wfvb")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="ClosedCorridor2" parent="Course" unique_id=1472757225 instance=ExtResource("5_m5qie")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 0.5, 0, -1.509958e-07, 0, -1, 0, -12, 38)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=217354258]
+environment = SubResource("Environment_ppjov")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2071139483]
+transform = Transform3D(-0.8660254, -0.2649597, -0.42402408, 0, -0.84804803, 0.5299193, -0.50000006, 0.45892358, 0.73443115, 0, 0, 0)
+shadow_enabled = true

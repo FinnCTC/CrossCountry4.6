@@ -5,6 +5,7 @@ class_name UI
 @onready var win_screen: WinScreen = $WinScreen
 @onready var pause_screen = $PauseScreen
 @onready var grade_times = $"../..".grade_times
+@onready var level_number = $"../..".level_number
 
 @export var current_ui: Control
 @export var beginning_popup: Control
