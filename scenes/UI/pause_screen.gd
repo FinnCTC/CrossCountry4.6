@@ -2,6 +2,11 @@ extends Control
 
 @onready var parent: UI = $".."
 
+func _ready() -> void:
+	%ResumeButton.pressed.connect(_on_resume_button_pressed)
+	%RestartButton.pressed.connect(_on_restart_button_pressed)
+	%LevelSelectButton.pressed.connect(_on_level_select_button_pressed)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

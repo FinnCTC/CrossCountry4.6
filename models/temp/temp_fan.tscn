@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ci0ndappto2br" path="res://scripts/fan.gd" id="1_2t2fx"]
 [ext_resource type="PackedScene" uid="uid://b1kdueq3lwued" path="res://fan.tscn" id="2_k2i6i"]
 [ext_resource type="Animation" uid="uid://wayu22u1yykq" path="res://models/Anims/enviroment/fan_spin.anim" id="3_6xdne"]
-[ext_resource type="PackedScene" uid="uid://dtlbymnwmtpkh" path="res://models/environment/wind.glb" id="4_21tgd"]
+[ext_resource type="Material" uid="uid://pgn1tejfkmy" path="res://models/environment/Material.002.tres" id="4_21tgd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2t2fx"]
 height = 20.05603
@@ -13,6 +13,8 @@ radius = 2.4003906
 _data = {
 &"Fan_Spin": ExtResource("3_6xdne")
 }
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ambq3"]
 
 [node name="TempFan" type="Area3D" unique_id=1955595447]
 script = ExtResource("1_2t2fx")
@@ -27,8 +29,10 @@ transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="fan" unique_id=269032462]
 libraries/ = SubResource("AnimationLibrary_21tgd")
 
-[node name="wind" parent="." unique_id=1495093447 instance=ExtResource("4_21tgd")]
-transform = Transform3D(2.6100001, 0, 0, 0, 9.6, 0, 0, 0, 2.24, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1672038531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_ambq3")
+surface_material_override/0 = ExtResource("4_21tgd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

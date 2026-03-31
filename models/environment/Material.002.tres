@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://pgn1tejfkmy"]
+
+[ext_resource type="Texture2D" uid="uid://f8dkoo4hhk" path="res://models/environment/newwind_Wind_imgag.png" id="1_xl45s"]
+
+[resource]
+resource_name = "Material.002"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_xl45s")
+roughness = 0.5

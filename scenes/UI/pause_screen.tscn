@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c6lmtrfq8y2rc"]
 
 [ext_resource type="Script" uid="uid://bk5pfvpe51wcn" path="res://scenes/UI/pause_screen.gd" id="1_icfcd"]
-[ext_resource type="Texture2D" uid="uid://bj3v2tfu31an0" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_brown.png" id="1_k6jvu"]
 [ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="2_icfcd"]
 [ext_resource type="Texture2D" uid="uid://6x2qjj5n0gi4" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_grey.png" id="3_bdp6l"]
 
@@ -24,7 +23,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_icfcd")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1668396741]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1077918507]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -38,13 +37,21 @@ offset_right = 338.875
 offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_k6jvu")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=212654591]
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect" unique_id=643895767]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1275, 0, 0.51, 0.6392157)
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=1006777777]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,30 +63,31 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=818382667]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=1526647617]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=306476034]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1963267728]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=909121273]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2019983140]
 layout_mode = 2
 size_flags_vertical = 1
 text = "PAUSE"
 label_settings = SubResource("LabelSettings_rq7uk")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=855947274]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1410659499]
 layout_mode = 2
 text = "
 "
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1154981394]
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=2132580180]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ResumeButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2089725704]
+[node name="ResumeButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1335213060]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
@@ -89,7 +97,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" unique_id=967503509]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" unique_id=1090165309]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,7 +113,8 @@ grow_vertical = 2
 text = "RESUME"
 label_settings = SubResource("LabelSettings_thj4g")
 
-[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=937091116]
+[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1547756708]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
@@ -115,7 +124,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" unique_id=1698362145]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" unique_id=945730117]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,7 +140,8 @@ grow_vertical = 2
 text = "RESTART"
 label_settings = SubResource("LabelSettings_thj4g")
 
-[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2008780491]
+[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1781296713]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
@@ -141,7 +151,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/LevelSelectButton" unique_id=832123745]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/LevelSelectButton" unique_id=1333814293]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,7 +167,3 @@ grow_vertical = 2
 text = "LEVEL SELECT"
 label_settings = SubResource("LabelSettings_thj4g")
 horizontal_alignment = 1
-
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
