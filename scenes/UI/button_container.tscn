@@ -5,44 +5,6 @@
 [ext_resource type="Script" uid="uid://dojiaytswf4ku" path="res://scenes/UI/button_container_row.gd" id="3_c1wfi"]
 [ext_resource type="PackedScene" uid="uid://g67mqq0ee5vo" path="res://scenes/UI/level_button.tscn" id="4_c1wfi"]
 
-[sub_resource type="Animation" id="Animation_c1wfi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ButtonContainerRow/LevelButton:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1.8247963, 1.8247963, 1.8247963, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_rje3o"]
-resource_name = "new_animation"
-loop_mode = 1
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ButtonContainerRow/LevelButton:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 4.594792, 1),
-"update": 0,
-"values": [Color(1.353256, 1.353256, 1.353256, 1), Color(1, 1, 1, 1), Color(1.353256, 1.353256, 1.353256, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dlkrc"]
-_data = {
-&"RESET": SubResource("Animation_c1wfi"),
-&"new_animation": SubResource("Animation_rje3o")
-}
-
 [node name="ButtonContainer" type="VBoxContainer" unique_id=1766808386]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -53,7 +15,6 @@ layout_mode = 2
 script = ExtResource("3_c1wfi")
 
 [node name="LevelButton" parent="ButtonContainerRow" unique_id=342711618 instance=ExtResource("4_c1wfi")]
-modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
 layout_mode = 2
 
 [node name="LevelButton2" parent="ButtonContainerRow" unique_id=1726364980 instance=ExtResource("4_c1wfi")]
@@ -87,7 +48,3 @@ layout_mode = 2
 
 [node name="LevelButton3" parent="ButtonContainerRow3" unique_id=582060508 instance=ExtResource("4_c1wfi")]
 layout_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1574559472]
-unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_dlkrc")
