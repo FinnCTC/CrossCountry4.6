@@ -115,19 +115,19 @@ func _process(delta: float) -> void:
 		if movement_vector.x > 0:
 			var target_velocity = movement_vector.x * max_movement_speed
 			if target_velocity > velocity.x:
-				velocity.x = move_toward(velocity.x, target_velocity, acceleration)
+				velocity.x = move_toward(velocity.x, target_velocity, acceleration * delta)
 		if movement_vector.x < 0:
 			var target_velocity = movement_vector.x * max_movement_speed
 			if target_velocity < velocity.x:
-				velocity.x = move_toward(velocity.x, target_velocity, acceleration)
+				velocity.x = move_toward(velocity.x, target_velocity, acceleration * delta)
 		if movement_vector.z > 0:
 			var target_velocity = movement_vector.z * max_movement_speed
 			if target_velocity > velocity.z:
-				velocity.z = move_toward(velocity.z, target_velocity, acceleration)
+				velocity.z = move_toward(velocity.z, target_velocity, acceleration * delta)
 		if movement_vector.z < 0:
 			var target_velocity = movement_vector.z * max_movement_speed
 			if target_velocity < velocity.z:
-				velocity.z = move_toward(velocity.z, target_velocity, acceleration)
+				velocity.z = move_toward(velocity.z, target_velocity, acceleration * delta)
 	var friction
 	
 	if dashing:

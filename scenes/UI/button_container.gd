@@ -1,54 +1,73 @@
 extends VBoxContainer
 class_name ButtonContainer
 
+@onready var buttons_array: Array = create_buttons_array()
+
 enum BUTTON_MODES {MOUSE, CONTROLLER}
 
 var button_mode: BUTTON_MODES = BUTTON_MODES.MOUSE
 
-var buttons_array: Array
-
 var selected_button_index: Vector2
 
+var selected_button: LevelButton
+
 func _ready() -> void:
-	buttons_array = create_buttons_array()
+	switch_button_mode(BUTTON_MODES.CONTROLLER)
 
 func _process(delta: float) -> void:
 	if button_mode == BUTTON_MODES.CONTROLLER:
 		if Input.is_action_just_pressed("move_back"):
 			move_selection_vertical(1)
+		if Input.is_action_just_pressed("move_foward"):
+			move_selection_vertical(-1)
+		if Input.is_action_just_pressed("move_left"):
+			move_selection_horizontal(-1)
+		if Input.is_action_just_pressed("move_right"):
+			move_selection_horizontal(1)
+		
+		if Input.is_action_just_pressed("move_jump"):
+			selected_button.pressed.emit()
 
 func move_selection_vertical(direction: int):
 	var start = selected_button_index.y + direction
-	start = start.clamp(0, buttons_array.size() - 1)
+	var stop = buttons_array.size() if direction == 1 else -1
 	
-	var end = buttons_array.size() if direction > 0 else -1
-	
-	for i in range(start, end, direction):
-		if buttons_array[i].size() > selected_button_index.x:
+	for i in range(start, stop, direction):
+		var row = buttons_array[i]
+		if row.size() >= selected_button_index.x:
 			selected_button_index.y = i
-			break
-	
-	var next_row = buttons_array[start]
-	var last_button = next_row[-1]
-	selected_button_index = Vector2(next_row.size() - 1, start)
+			focus_button(selected_button_index)
 
 func move_selection_horizontal(direction: int):
 	var current_row = buttons_array[selected_button_index.y]
 	
 	if direction < 0 and selected_button_index.x == 0:
-		selected_button_index = current_row.size() - 1
+		selected_button_index.x = current_row.size() - 1
+		focus_button(selected_button_index)
 		return
 	
 	if direction > 0 and selected_button_index.x >= current_row.size() - 1:
 		selected_button_index.x = 0
+		focus_button(selected_button_index)
 		return
 	
 	selected_button_index.x += direction
+	focus_button(selected_button_index)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+	#if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		#switch_button_mode(BUTTON_MODES.CONTROLLER)
+	#elif event is InputEventMouse or event is InputEventKey:
+		#switch_button_mode(BUTTON_MODES.MOUSE)
+	pass
+
+func switch_button_mode(new_button_mode: BUTTON_MODES):
+	if new_button_mode == BUTTON_MODES.CONTROLLER:
 		button_mode = BUTTON_MODES.CONTROLLER
-		selected_button_index = Vector2(1, 1)
+		selected_button_index = Vector2(0, 0)
+		focus_button(selected_button_index)
+	elif new_button_mode == BUTTON_MODES.MOUSE:
+		unfocus_buttons()
 
 func create_buttons_array() -> Array:
 	var buttons_array: Array[Array] = []
@@ -67,8 +86,17 @@ func create_buttons_array() -> Array:
 			buttons_array.append(array_row)
 	return buttons_array
 
-func focus_button(button_x: int, button_y):
-	pass
+func focus_button(button_index: Vector2):
+	unfocus_buttons()
+	var button_object = buttons_array[button_index.y][button_index.x]
+	
+	button_object.button.modulate = Color(2, 2, 2)
+	button_object.selected = true
+	
+	selected_button = button_object.button
 
-func unfocus_button():
-	pass
+func unfocus_buttons():
+	for row in buttons_array:
+		for button_object in row:
+			button_object.button.modulate = Color(1, 1, 1)
+			button_object.selected = false

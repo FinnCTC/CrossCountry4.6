@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://e43t6p0g220l" path="res://scenes/UI/level_select.gd" id="1_hoiyx"]
 [ext_resource type="PackedScene" uid="uid://g67mqq0ee5vo" path="res://scenes/UI/level_button.tscn" id="2_0i6e4"]
+[ext_resource type="Script" uid="uid://3o13y85p1548" path="res://scenes/UI/button_container.gd" id="2_1fmgh"]
+[ext_resource type="Script" uid="uid://dojiaytswf4ku" path="res://scenes/UI/button_container_row.gd" id="3_0ra34"]
 [ext_resource type="Texture2D" uid="uid://bjnvkbvpoir7k" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_brown_close.png" id="3_hoiyx"]
 
 [node name="LevelSelect" type="Control" unique_id=961971189]
@@ -38,7 +40,7 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 color = Color(0.23, 0.23, 0.23, 0.63529414)
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/ColorRect" unique_id=1044118784]
+[node name="ButtonContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/ColorRect" unique_id=980444106]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -46,36 +48,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_1fmgh")
+metadata/_custom_type_script = "uid://3o13y85p1548"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer" unique_id=55019445]
+[node name="ButtonContainerRow" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer" unique_id=2109563500]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("3_0ra34")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
 
-[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer" unique_id=342711618 instance=ExtResource("2_0i6e4")]
+[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow" unique_id=342711618 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 1
 
-[node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer" unique_id=1413723822 instance=ExtResource("2_0i6e4")]
+[node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow" unique_id=2096315018 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 2
 
-[node name="LevelButton3" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer" unique_id=26209293 instance=ExtResource("2_0i6e4")]
+[node name="LevelButton3" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow" unique_id=2140307357 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer" unique_id=213274320]
+[node name="ButtonContainerRow2" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer" unique_id=1269840102]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("3_0ra34")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
 
-[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer2" unique_id=1811198648 instance=ExtResource("2_0i6e4")]
+[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=813636171 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 4
 
-[node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer2" unique_id=1911718531 instance=ExtResource("2_0i6e4")]
+[node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=338386670 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 5
 
-[node name="LevelButton3" parent="ColorRect/MarginContainer/ColorRect/ButtonsContainer/HBoxContainer2" unique_id=1926761211 instance=ExtResource("2_0i6e4")]
+[node name="LevelButton3" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=1319312478 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 6
 
