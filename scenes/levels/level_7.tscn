@@ -42,6 +42,7 @@ fog_height_density = 0.0245
 
 [node name="Level7" type="Node3D" unique_id=1810918114]
 script = ExtResource("1_ntash")
+level_number = 7
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
 [node name="Dependancies" type="Node3D" parent="." unique_id=1678684041]
@@ -280,7 +281,7 @@ transform = Transform3D(15.681644, 0, 0, 0, 9.611054, 0, 0, 0, 1.0000002, -4.212
 transform = Transform3D(15.681644, 0, 0, 0, 9.611054, 0, 0, 0, 1.0000002, -4.212471, 12.894797, -8.786812)
 
 [node name="Hazard" parent="Course/Node3D/TallRoom" unique_id=778791349 instance=ExtResource("9_q0wsq")]
-transform = Transform3D(1.7998133, 0, -2.842171e-14, 0, 1, 0, 0, 0, 3.8175542, -4.2837164e-06, -2.5040092, 38.335365)
+transform = Transform3D(1.7998132, 0, -2.2737368e-13, 0, 1, 0, 2.842171e-14, 0, 7.421325, -4.5459847e-06, -2.5040092, 42.23147)
 
 [node name="Hazard2" parent="Course/Node3D/TallRoom" unique_id=1803981954 instance=ExtResource("9_q0wsq")]
 transform = Transform3D(2.3569999, 0, -1.1368684e-13, 0, 1.31, 0, 0, 0, 10.799998, -3.6717574e-06, -8.218296, 5.2444687)

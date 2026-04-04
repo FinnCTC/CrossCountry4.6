@@ -10,13 +10,13 @@
 transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0)
 
 [node name="Wall" parent="." unique_id=1312718944 instance=ExtResource("2_6kdb8")]
-transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 5, 0, -5, 0, -6.556708e-08, 4, 8, 0)
+transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 5, 0, -5, 0, -6.556708e-08, 4, 7.8, 0)
 
 [node name="Wall2" parent="." unique_id=2091895643 instance=ExtResource("2_6kdb8")]
-transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 5, 0, -5, 0, -6.556708e-08, -4, 8, 0)
+transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 5, 0, -5, 0, -6.556708e-08, -4, 7.8, 0)
 
 [node name="Roof" parent="." unique_id=1960992729 instance=ExtResource("3_brox3")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 3, 0, 9.5, 0)
 
 [node name="Wall3" parent="." unique_id=14089601 instance=ExtResource("2_6kdb8")]
-transform = Transform3D(3.25, 0, 0, 0, 5, 0, 0, 0, 1.5, 0, 8, -5.75)
+transform = Transform3D(3.25, 0, 0, 0, 5, 0, 0, 0, 1.5, 0, 7.8, -5.75)

@@ -23,6 +23,9 @@
 [ext_resource type="Animation" uid="uid://daixevavsh3pj" path="res://models/Anims/keishi_3/A_K_Land.anim" id="23_4hvnv"]
 [ext_resource type="Animation" uid="uid://b6lpli5bfs5ji" path="res://models/Anims/keishi_3/A_K_Run.anim" id="24_bbmj2"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_yj68g"]
+radius = 0.1
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
 height = 1.7392578
 
@@ -139,20 +142,23 @@ metadata/_custom_type_script = "uid://chn55xwjm0dse"
 
 [node name="TwistPivot" type="Node3D" parent="." unique_id=1736324403]
 unique_name_in_owner = true
-transform = Transform3D(1.0000001, 0, 3.7252903e-09, 0, 1, 0, -3.7252903e-09, 0, 1.0000001, 0, 0.29297924, 0)
+transform = Transform3D(1.0000001, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000001, 0, 0.29297924, 0)
 
 [node name="PitchPivot" type="Node3D" parent="TwistPivot" unique_id=1488661790]
 unique_name_in_owner = true
 transform = Transform3D(0.99999523, 0.0030601916, 0.00027097762, -0.0030607558, 0.9999931, 0.0021038502, -0.0002645366, -0.002104676, 0.99999785, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot" unique_id=1565724278]
-unique_name_in_owner = true
-transform = Transform3D(1, 2.401066e-10, -7.450581e-09, 4.838512e-10, 1, 8.1025064e-08, 3.7252903e-09, -7.4505806e-08, 0.9999999, 7.042743e-05, 0.9082897, 3.1641653)
-current = true
-
-[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=372025947]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+[node name="SpringArm3D" type="SpringArm3D" parent="TwistPivot/PitchPivot" unique_id=372025947]
+transform = Transform3D(0.9999953, -0.0030607556, -0.00026454404, 0.0030601928, 0.9999931, -0.0021046698, 0.00027097948, 0.0021038565, 0.9999976, 0, 1, 0)
+collision_mask = 2
+shape = SubResource("SphereShape3D_yj68g")
 spring_length = 3.0
+margin = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot/SpringArm3D" unique_id=1565724278]
+unique_name_in_owner = true
+transform = Transform3D(0.9999953, 0.0030601916, 0.00027097575, -0.003060756, 0.99999326, 0.0021039324, -0.00026453473, -0.0021047515, 0.9999978, -3.8569266e-11, 0.29297927, -9.32044e-12)
+current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=820443119]
 transform = Transform3D(1.000004, 0, -2.6077032e-08, 0, 1, 0, 2.6077032e-08, 0, 1.000004, -0.00073925895, 0.1303711, -0.007220632)

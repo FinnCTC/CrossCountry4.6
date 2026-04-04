@@ -12,8 +12,10 @@ font_color = Color(0, 0, 0, 1)
 [node name="LevelButton" type="TextureButton" unique_id=342711618]
 texture_filter = 1
 custom_minimum_size = Vector2(150, 150)
+offset_right = 150.0
+offset_bottom = 150.0
 size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_vertical = 6
 texture_normal = ExtResource("1_5yt3r")
 texture_pressed = ExtResource("1_5yt3r")
 texture_hover = ExtResource("1_5yt3r")

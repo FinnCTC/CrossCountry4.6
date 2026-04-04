@@ -43,10 +43,6 @@ var has_airdashed := false
 var sliding := false
 var is_in_fan := false
 
-@onready var twist_pivot := $TwistPivot
-@onready var pitch_pivot := $TwistPivot/PitchPivot
-
-
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -105,7 +101,7 @@ func _process(delta: float) -> void:
 	
 	var movement_vector = (forward * movement_input.z) + (right * movement_input.x)
 	
-	movement_vector = movement_vector.rotated(Vector3.UP, pitch_pivot.rotation.y)
+	movement_vector = movement_vector.rotated(Vector3.UP, %PitchPivot.rotation.y)
 	
 	if not %StateMachine.current_state == glide_state:
 		velocity.y -= 50 * delta
@@ -135,7 +131,7 @@ func _process(delta: float) -> void:
 	elif is_on_floor():
 		friction = 30
 	else:
-		friction = 1
+		friction = 10
 	velocity.x = move_toward(velocity.x, 0, friction * delta)
 	velocity.z = move_toward(velocity.z, 0, friction * delta)
 	
@@ -148,9 +144,9 @@ func _process(delta: float) -> void:
 		pitch_input = input_vector.y * controller_sensitivity
 		$keishi_new/Armature/Skeleton3D/Cube.rotate_y(twist_input)
 	
-	twist_pivot.rotate_y(twist_input)
-	pitch_pivot.rotate_x(pitch_input)
-	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
+	%TwistPivot.rotate_y(twist_input)
+	%PitchPivot.rotate_x(pitch_input)
+	%PitchPivot.rotation.x = clamp(%PitchPivot.rotation.x, 
 		deg_to_rad(-60), 
 		deg_to_rad(60)
 	)
@@ -181,8 +177,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_mode = CAMERA_MODES.CONTROLLER
 
 func reset_camera():
-	twist_pivot.rotation = Vector3.ZERO
-	pitch_pivot.rotation = Vector3(10, 0, 0)
+	%TwistPivot.rotation = Vector3.ZERO
+	%PitchPivot.rotation = Vector3(10, 0, 0)
 	$keishi_new/Armature/Skeleton3D/Cube.rotation.y = 0
 
 #Out of bounds

@@ -34,7 +34,7 @@ func move_selection_vertical(direction: int):
 	
 	for i in range(start, stop, direction):
 		var row = buttons_array[i]
-		if row.size() >= selected_button_index.x:
+		if row.size() - 1 >= selected_button_index.x:
 			selected_button_index.y = i
 			focus_button(selected_button_index)
 

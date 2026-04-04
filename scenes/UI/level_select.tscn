@@ -54,6 +54,7 @@ metadata/_custom_type_script = "uid://3o13y85p1548"
 [node name="ButtonContainerRow" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer" unique_id=2109563500]
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 script = ExtResource("3_0ra34")
 metadata/_custom_type_script = "uid://dojiaytswf4ku"
 
@@ -69,15 +70,15 @@ level_number = 2
 layout_mode = 2
 level_number = 3
 
+[node name="LevelButton4" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow" unique_id=813636171 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 4
+
 [node name="ButtonContainerRow2" type="HBoxContainer" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer" unique_id=1269840102]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_0ra34")
 metadata/_custom_type_script = "uid://dojiaytswf4ku"
-
-[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=813636171 instance=ExtResource("2_0i6e4")]
-layout_mode = 2
-level_number = 4
 
 [node name="LevelButton2" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=338386670 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
@@ -86,6 +87,14 @@ level_number = 5
 [node name="LevelButton3" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=1319312478 instance=ExtResource("2_0i6e4")]
 layout_mode = 2
 level_number = 6
+
+[node name="LevelButton" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=82725382 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 7
+
+[node name="LevelButton4" parent="ColorRect/MarginContainer/ColorRect/ButtonContainer/ButtonContainerRow2" unique_id=195080273 instance=ExtResource("2_0i6e4")]
+layout_mode = 2
+level_number = 8
 
 [node name="ExitButton" type="TextureButton" parent="ColorRect" unique_id=1674606337]
 unique_name_in_owner = true

@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://blysekx7mvnrj"]
+
+[ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_aq65u"]
+[ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_xsrpe"]
+[ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_0kxia"]
+[ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_5umh1"]
+[ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_v7ucw"]
+[ext_resource type="PackedScene" uid="uid://y7ffekb0d65y" path="res://scenes/environment/unique_rooms/jump_up_room.tscn" id="6_7snfr"]
+[ext_resource type="PackedScene" uid="uid://omma6o4yvpxg" path="res://scenes/environment/corridors/corridor.tscn" id="6_vsqe1"]
+[ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="7_kk2ik"]
+[ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="8_6to6e"]
+[ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="9_40qa3"]
+[ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="10_e7lui"]
+[ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="10_xsrpe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acgl5"]
+size = Vector3(24, 2.3972168, 0.6203613)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61loj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_xgnsd"]
+sky_material = SubResource("ProceduralSkyMaterial_61loj")
+
+[sub_resource type="Environment" id="Environment_mnqm8"]
+background_mode = 2
+sky = SubResource("Sky_xgnsd")
+ambient_light_color = Color(0.8919199, 0.7867652, 0.9385143, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.57716626, 0.56136537, 0.3435307, 1)
+fog_light_energy = 0.51
+fog_density = 0.0045
+fog_aerial_perspective = 0.732
+fog_height = -679.23
+fog_height_density = 0.0245
+
+[node name="Level8" type="Node3D" unique_id=1568804882]
+script = ExtResource("1_aq65u")
+level_number = 8
+metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
+
+[node name="Dependancies" type="Node3D" parent="." unique_id=10315667]
+
+[node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=1659783683]
+
+[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=603181297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.210285, -73.47167)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=1548743412]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -0.14798546, -1.1483536)
+shape = SubResource("BoxShape3D_acgl5")
+
+[node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_xsrpe")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
+
+[node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_0kxia")]
+mouse_filter = 1
+beginning_popup = NodePath("BeginningPopup")
+
+[node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_5umh1")]
+layout_mode = 1
+message = "YOU CAN CHAIN MOVES IN THE AIR! THE BEST WAY TO BEAT THIS LEVEL IS TO CHAIN THE GLIDE INTO THE AIRDASH. REMEMBER, YOU CAN ONLY DO ONE AIRDASH UNTIL YOU HIT THE GROUND AGAIN."
+
+[node name="Course" type="Node3D" parent="." unique_id=886185761]
+
+[node name="ClosedCorridor" parent="Course" unique_id=1446047497 instance=ExtResource("5_v7ucw")]
+
+[node name="JumpUpRoom" parent="Course" unique_id=2032008013 instance=ExtResource("6_7snfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+
+[node name="FanElevator" type="Node3D" parent="Course" unique_id=2071978345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 23.5)
+
+[node name="Floor" parent="Course/FanElevator" unique_id=584148717 instance=ExtResource("7_kk2ik")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="Wall" parent="Course/FanElevator" unique_id=1312718944 instance=ExtResource("8_6to6e")]
+transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 20, 0, -5, 0, -6.556708e-08, -4, 31, 0)
+
+[node name="Wall3" parent="Course/FanElevator" unique_id=643511260 instance=ExtResource("8_6to6e")]
+transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 20, 0, -5, 0, -6.556708e-08, 4, 31, 0)
+
+[node name="Wall4" parent="Course/FanElevator" unique_id=833572564 instance=ExtResource("8_6to6e")]
+transform = Transform3D(3.5, 0, 8.526513e-15, 0, 20, 0, -1.9895196e-14, 0, 1.5, 0, 31, 6)
+
+[node name="Roof" parent="Course/FanElevator" unique_id=1960992729 instance=ExtResource("9_40qa3")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 3.1511865, 0, 39, 0)
+
+[node name="Wall5" parent="Course/FanElevator" unique_id=92919125 instance=ExtResource("8_6to6e")]
+transform = Transform3D(3.5, 0, 8.526513e-15, 0, 10, 0, -1.9895196e-14, 0, 1.5, 0, 23, -6)
+
+[node name="TempFan" parent="Course/FanElevator" unique_id=1955595447 instance=ExtResource("10_xsrpe")]
+
+[node name="LongLavaCorridor" type="Node3D" parent="Course" unique_id=1917446617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.14294, 0)
+
+[node name="Floor" parent="Course/LongLavaCorridor" unique_id=2103255098 instance=ExtResource("7_kk2ik")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 17.513771, 0, 0, 0)
+
+[node name="Wall" parent="Course/LongLavaCorridor" unique_id=1189845016 instance=ExtResource("8_6to6e")]
+transform = Transform3D(-6.556708e-07, 0, 1.5, 0, 6.5, 0, -15, 0, -6.556708e-08, -4, 10, 0)
+
+[node name="Wall3" parent="Course/LongLavaCorridor" unique_id=1424800631 instance=ExtResource("8_6to6e")]
+transform = Transform3D(-6.556708e-07, 0, 1.5, 0, 6.5, 0, -15, 0, -6.556708e-08, 4, 10, 0)
+
+[node name="Roof" parent="Course/LongLavaCorridor" unique_id=811101704 instance=ExtResource("9_40qa3")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 8.664252, 0, 12.5, 0)
+
+[node name="Hazard" parent="Course/LongLavaCorridor" unique_id=778791349 instance=ExtResource("10_e7lui")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="Corridor" parent="Course" unique_id=610430802 instance=ExtResource("6_vsqe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -23)
+
+[node name="LongLavaCorridor2" type="Node3D" parent="Course" unique_id=1376667546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -46.074)
+
+[node name="Floor" parent="Course/LongLavaCorridor2" unique_id=1873293635 instance=ExtResource("7_kk2ik")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 17.513771, 0, 0, 3.22612)
+
+[node name="Wall" parent="Course/LongLavaCorridor2" unique_id=931784504 instance=ExtResource("8_6to6e")]
+transform = Transform3D(-6.556708e-07, 0, 1.5, 0, 6.5, 0, -15, 0, -6.556708e-08, -4, 10, 0)
+
+[node name="Wall3" parent="Course/LongLavaCorridor2" unique_id=213079659 instance=ExtResource("8_6to6e")]
+transform = Transform3D(-6.556708e-07, 0, 1.5, 0, 6.5, 0, -15, 0, -6.556708e-08, 4, 10, 0)
+
+[node name="Roof" parent="Course/LongLavaCorridor2" unique_id=1327480786 instance=ExtResource("9_40qa3")]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 8.664252, 0, 12.5, 0)
+
+[node name="Wall4" parent="Course/LongLavaCorridor2" unique_id=630298665 instance=ExtResource("8_6to6e")]
+transform = Transform3D(3.5, 0, 0, 0, 1.33, 0, 0, 0, 1, 0, 12, -17.5)
+
+[node name="Hazard" parent="Course/LongLavaCorridor2" unique_id=834381957 instance=ExtResource("10_e7lui")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="ClosedCorridor2" parent="Course" unique_id=201716016 instance=ExtResource("5_v7ucw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.753872, -70.17873)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=446007779]
+environment = SubResource("Environment_mnqm8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=443446097]
+transform = Transform3D(-0.8660254, -0.2649597, -0.42402408, 0, -0.84804803, 0.5299193, -0.50000006, 0.45892358, 0.73443115, 0, 0, 0)
+shadow_enabled = true
