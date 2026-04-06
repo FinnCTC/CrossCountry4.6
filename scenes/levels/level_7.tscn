@@ -42,6 +42,7 @@ fog_height_density = 0.0245
 
 [node name="Level7" type="Node3D" unique_id=1810918114]
 script = ExtResource("1_ntash")
+grade_times = Array[int]([6, 15, 20, 30])
 level_number = 7
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 

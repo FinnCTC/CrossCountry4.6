@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ddbu4lfpg7awn" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_grey_red.png" id="1_0g4u2"]
 [ext_resource type="Script" uid="uid://ba8qqo48h11is" path="res://scenes/UI/win_screen.gd" id="1_fx832"]
 [ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="2_fx832"]
-[ext_resource type="Texture2D" uid="uid://c0spr84cbyr5x" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Double/minimap_icon_star_yellow.png" id="3_2e4q3"]
 [ext_resource type="Texture2D" uid="uid://camwsey7tctgf" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_red.png" id="4_d3r46"]
+[ext_resource type="Texture2D" uid="uid://dpmngbpmhe6f2" path="res://sprites/UI/rank_letters/64x64-ARank.png" id="4_fx832"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ssjgs"]
 font = ExtResource("2_fx832")
@@ -63,9 +63,10 @@ text = "your rank:"
 label_settings = SubResource("LabelSettings_ssjgs")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=736436821]
+[node name="RankTextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=736436821]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_2e4q3")
+texture = ExtResource("4_fx832")
 stretch_mode = 3
 
 [node name="Label2" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1644332851]

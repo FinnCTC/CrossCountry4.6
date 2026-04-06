@@ -3,6 +3,8 @@ class_name WinScreen
 
 @onready var parent = $".."
 
+enum RANK {S, A, B, C, D}
+
 var grade_times
 
 func _ready() -> void:
@@ -12,6 +14,7 @@ func _ready() -> void:
 func display_win(seconds_taken: int):
 	grade_times = $"..".grade_times
 	display_time(seconds_taken)
+	display_rank(seconds_taken)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	if not Global.level_manager.has_next_level(parent.level_number):
@@ -22,15 +25,22 @@ func display_time(seconds_taken: int):
 	var time_string = Global.format_time(time[0], time[1])
 	%TimeLabel.text = time_string
 
-func get_rank(seconds_taken: int) -> String:
-	if seconds_taken < grade_times[0]:
-		return "A"
-	elif seconds_taken < grade_times[1]:
-		return "B"
-	elif seconds_taken < grade_times[2]:
-		return "C"
+func display_rank(seconds_taken: int):
+	var rank_string = ""
+	if seconds_taken <= grade_times[0]:
+		rank_string = "S"
+	elif seconds_taken <= grade_times[1]:
+		rank_string = "A"
+	elif seconds_taken <= grade_times[2]:
+		rank_string = "B"
+	elif seconds_taken <= grade_times[3]:
+		rank_string = "C"
 	else:
-		return "D"
+		rank_string = "D"
+	
+	var rank_image_filepath = "res://sprites/UI/rank_letters/64x64-" + rank_string + "Rank.png"
+	var rank_image = await load(rank_image_filepath)
+	%RankTextureRect.texture = rank_image
 
 func _on_next_level_button_pressed() -> void:
 	Global.level_manager.enter_next_level()

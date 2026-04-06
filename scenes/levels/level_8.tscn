@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_aq65u"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_xsrpe"]
 [ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_0kxia"]
-[ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_5umh1"]
 [ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_v7ucw"]
 [ext_resource type="PackedScene" uid="uid://y7ffekb0d65y" path="res://scenes/environment/unique_rooms/jump_up_room.tscn" id="6_7snfr"]
 [ext_resource type="PackedScene" uid="uid://omma6o4yvpxg" path="res://scenes/environment/corridors/corridor.tscn" id="6_vsqe1"]
@@ -38,6 +37,7 @@ fog_height_density = 0.0245
 
 [node name="Level8" type="Node3D" unique_id=1568804882]
 script = ExtResource("1_aq65u")
+grade_times = Array[int]([7, 15, 30, 50])
 level_number = 8
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
@@ -58,11 +58,7 @@ transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, 
 
 [node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_0kxia")]
 mouse_filter = 1
-beginning_popup = NodePath("BeginningPopup")
-
-[node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_5umh1")]
-layout_mode = 1
-message = "YOU CAN CHAIN MOVES IN THE AIR! THE BEST WAY TO BEAT THIS LEVEL IS TO CHAIN THE GLIDE INTO THE AIRDASH. REMEMBER, YOU CAN ONLY DO ONE AIRDASH UNTIL YOU HIT THE GROUND AGAIN."
+beginning_popup = NodePath("")
 
 [node name="Course" type="Node3D" parent="." unique_id=886185761]
 

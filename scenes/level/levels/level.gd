@@ -1,7 +1,7 @@
 extends Node3D
 class_name Level
 
-@export var grade_times: Array[int] = [0, 0, 0]
+@export var grade_times: Array[int] = [0, 0, 0, 0]
 @export var level_number: int
 
 @onready var start_point: Node3D = $Dependancies/StartPoint

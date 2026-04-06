@@ -18,9 +18,6 @@ signal dead
 @export var walk_state: PlayerState
 @export var airdash_state: PlayerState
 @export var fastfall_state: PlayerState
-
-@onready var camera = $TwistPivot/PitchPivot/Camera3D
-
 enum {IDLE, RUN, GLIDE, FALL}
 var cur_anim = IDLE
 
