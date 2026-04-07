@@ -1,23 +1,27 @@
 extends Control
 class_name WinScreen
 
-@onready var parent = $".."
+@onready var ui_manager = $".."
 
 enum RANK {S, A, B, C, D}
+
+var seconds_taken: int = 0
 
 var grade_times
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	seconds_taken = ui_manager.level_time
+	display_win()
 
-func display_win(seconds_taken: int):
-	grade_times = $"..".grade_times
+func display_win():
+	grade_times = ui_manager.grade_times
 	display_time(seconds_taken)
 	display_rank(seconds_taken)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	
-	if not Global.level_manager.has_next_level(parent.level_number):
+	if not Global.level_manager.has_next_level(ui_manager.level_number):
 		%NextLevelButton.visible = false
 
 func display_time(seconds_taken: int):
@@ -50,4 +54,4 @@ func _on_level_select_button_pressed() -> void:
 
 func _on_restart_button_pressed():
 	get_tree().paused = false
-	parent.restart_level()
+	ui_manager.restart_level()

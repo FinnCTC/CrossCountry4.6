@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="2_fx832"]
 [ext_resource type="Texture2D" uid="uid://camwsey7tctgf" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_red.png" id="4_d3r46"]
 [ext_resource type="Texture2D" uid="uid://dpmngbpmhe6f2" path="res://sprites/UI/rank_letters/64x64-ARank.png" id="4_fx832"]
+[ext_resource type="Script" uid="uid://3o13y85p1548" path="res://scenes/UI/button_container.gd" id="5_d3r46"]
+[ext_resource type="Script" uid="uid://dojiaytswf4ku" path="res://scenes/UI/button_container_row.gd" id="6_qkwci"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ssjgs"]
 font = ExtResource("2_fx832")
@@ -13,7 +15,7 @@ font = ExtResource("2_fx832")
 font = ExtResource("2_fx832")
 
 [node name="WinScreen" type="Control" unique_id=1721008017]
-process_mode = 3
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,14 +98,22 @@ theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 18
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer2" unique_id=1140609762]
+[node name="ButtonContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer2" unique_id=1299510966]
 layout_mode = 2
 alignment = 1
+script = ExtResource("5_d3r46")
+metadata/_custom_type_script = "uid://3o13y85p1548"
 
-[node name="NextLevelButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=674710766]
+[node name="ButtonContainerRow" type="HBoxContainer" parent="NinePatchRect/MarginContainer2/ButtonContainer" unique_id=60027375]
+layout_mode = 2
+script = ExtResource("6_qkwci")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="NextLevelButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow" unique_id=674710766]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 texture_normal = ExtResource("4_d3r46")
 texture_pressed = ExtResource("4_d3r46")
 texture_hover = ExtResource("4_d3r46")
@@ -111,7 +121,7 @@ texture_disabled = ExtResource("4_d3r46")
 texture_focused = ExtResource("4_d3r46")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/VBoxContainer/NextLevelButton" unique_id=887226422]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow/NextLevelButton" unique_id=887226422]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,10 +137,16 @@ grow_vertical = 2
 text = "NEXT LEVEL"
 label_settings = SubResource("LabelSettings_fx832")
 
-[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=899348863]
+[node name="ButtonContainerRow2" type="HBoxContainer" parent="NinePatchRect/MarginContainer2/ButtonContainer" unique_id=1921759129]
+layout_mode = 2
+script = ExtResource("6_qkwci")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow2" unique_id=899348863]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 texture_normal = ExtResource("4_d3r46")
 texture_pressed = ExtResource("4_d3r46")
 texture_hover = ExtResource("4_d3r46")
@@ -138,7 +154,7 @@ texture_disabled = ExtResource("4_d3r46")
 texture_focused = ExtResource("4_d3r46")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/VBoxContainer/RestartButton" unique_id=1552964202]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow2/RestartButton" unique_id=1552964202]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,10 +170,16 @@ grow_vertical = 2
 text = "RESTART LEVEL"
 label_settings = SubResource("LabelSettings_fx832")
 
-[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/VBoxContainer" unique_id=730941433]
+[node name="ButtonContainerRow3" type="HBoxContainer" parent="NinePatchRect/MarginContainer2/ButtonContainer" unique_id=193621096]
+layout_mode = 2
+script = ExtResource("6_qkwci")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow3" unique_id=730941433]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 texture_normal = ExtResource("4_d3r46")
 texture_pressed = ExtResource("4_d3r46")
 texture_hover = ExtResource("4_d3r46")
@@ -165,7 +187,7 @@ texture_disabled = ExtResource("4_d3r46")
 texture_focused = ExtResource("4_d3r46")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/VBoxContainer/LevelSelectButton" unique_id=595344927]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow3/LevelSelectButton" unique_id=595344927]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,6 +203,6 @@ grow_vertical = 2
 text = "LEVEL SELECT"
 label_settings = SubResource("LabelSettings_fx832")
 
-[connection signal="pressed" from="NinePatchRect/MarginContainer2/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer2/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MarginContainer2/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow2/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer2/ButtonContainer/ButtonContainerRow3/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

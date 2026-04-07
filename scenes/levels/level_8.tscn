@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_0kxia"]
 [ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_v7ucw"]
 [ext_resource type="PackedScene" uid="uid://y7ffekb0d65y" path="res://scenes/environment/unique_rooms/jump_up_room.tscn" id="6_7snfr"]
-[ext_resource type="PackedScene" uid="uid://omma6o4yvpxg" path="res://scenes/environment/corridors/corridor.tscn" id="6_vsqe1"]
 [ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="7_kk2ik"]
 [ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="8_6to6e"]
 [ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="9_40qa3"]
 [ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="10_e7lui"]
 [ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="10_xsrpe"]
+[ext_resource type="PackedScene" uid="uid://d0mn4rn0h1kdo" path="res://scenes/environment/corridors/long_corridor.tscn" id="11_0kxia"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_acgl5"]
 size = Vector3(24, 2.3972168, 0.6203613)
@@ -37,7 +37,7 @@ fog_height_density = 0.0245
 
 [node name="Level8" type="Node3D" unique_id=1568804882]
 script = ExtResource("1_aq65u")
-grade_times = Array[int]([7, 15, 30, 50])
+grade_times = Array[int]([9, 15, 30, 50])
 level_number = 8
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
@@ -56,9 +56,8 @@ shape = SubResource("BoxShape3D_acgl5")
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_xsrpe")]
 transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
 
-[node name="UIManager" parent="Dependancies" unique_id=446973243 node_paths=PackedStringArray("beginning_popup") instance=ExtResource("3_0kxia")]
+[node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("3_0kxia")]
 mouse_filter = 1
-beginning_popup = NodePath("")
 
 [node name="Course" type="Node3D" parent="." unique_id=886185761]
 
@@ -108,11 +107,11 @@ transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 8.664252, 0, 12.5, 0)
 [node name="Hazard" parent="Course/LongLavaCorridor" unique_id=778791349 instance=ExtResource("10_e7lui")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
 
-[node name="Corridor" parent="Course" unique_id=610430802 instance=ExtResource("6_vsqe1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -23)
+[node name="LongCorridor" parent="Course" unique_id=456805383 instance=ExtResource("11_0kxia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -29)
 
 [node name="LongLavaCorridor2" type="Node3D" parent="Course" unique_id=1376667546]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -46.074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -58)
 
 [node name="Floor" parent="Course/LongLavaCorridor2" unique_id=1873293635 instance=ExtResource("7_kk2ik")]
 transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 17.513771, 0, 0, 3.22612)
@@ -133,7 +132,7 @@ transform = Transform3D(3.5, 0, 0, 0, 1.33, 0, 0, 0, 1, 0, 12, -17.5)
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="ClosedCorridor2" parent="Course" unique_id=201716016 instance=ExtResource("5_v7ucw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.753872, -70.17873)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -81.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=446007779]
 environment = SubResource("Environment_mnqm8")

@@ -6,5 +6,9 @@ class_name BeginningPopup
 signal close
 
 func _ready():
-	%ContinueButton.pressed.connect(close.emit)
+	%ContinueButton.pressed.connect(on_continue_button_pressed)
 	%Label.text = message
+
+func on_continue_button_pressed():
+	print("continue")
+	close.emit()

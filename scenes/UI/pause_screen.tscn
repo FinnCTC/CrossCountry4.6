@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bk5pfvpe51wcn" path="res://scenes/UI/pause_screen.gd" id="1_icfcd"]
 [ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="2_icfcd"]
 [ext_resource type="Texture2D" uid="uid://6x2qjj5n0gi4" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_grey.png" id="3_bdp6l"]
+[ext_resource type="Script" uid="uid://3o13y85p1548" path="res://scenes/UI/button_container.gd" id="3_rq7uk"]
+[ext_resource type="Script" uid="uid://dojiaytswf4ku" path="res://scenes/UI/button_container_row.gd" id="4_thj4g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rq7uk"]
 font = ExtResource("2_icfcd")
@@ -11,6 +13,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_thj4g"]
 font = ExtResource("2_icfcd")
+font_color = Color(0, 0, 0, 1)
 
 [node name="PauseScreen" type="Control" unique_id=579878963]
 process_mode = 3
@@ -82,13 +85,24 @@ layout_mode = 2
 text = "
 "
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=2132580180]
+[node name="ButtonContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=370157245]
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
+script = ExtResource("3_rq7uk")
+metadata/_custom_type_script = "uid://3o13y85p1548"
 
-[node name="ResumeButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1335213060]
+[node name="ButtonContainerRow" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer" unique_id=576969034]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("4_thj4g")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="ResumeButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer/ButtonContainerRow" unique_id=1335213060]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
 texture_pressed = ExtResource("3_bdp6l")
@@ -97,7 +111,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/ResumeButton" unique_id=1090165309]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer/ButtonContainerRow/ResumeButton" unique_id=1090165309]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,9 +127,17 @@ grow_vertical = 2
 text = "RESUME"
 label_settings = SubResource("LabelSettings_thj4g")
 
-[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1547756708]
+[node name="ButtonContainerRow2" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer" unique_id=552470092]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("4_thj4g")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="RestartButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer/ButtonContainerRow2" unique_id=1547756708]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
 texture_pressed = ExtResource("3_bdp6l")
@@ -124,7 +146,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/RestartButton" unique_id=945730117]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer/ButtonContainerRow2/RestartButton" unique_id=945730117]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,9 +162,17 @@ grow_vertical = 2
 text = "RESTART"
 label_settings = SubResource("LabelSettings_thj4g")
 
-[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1781296713]
+[node name="ButtonContainerRow3" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer" unique_id=687459914]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("4_thj4g")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="LevelSelectButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer/ButtonContainerRow3" unique_id=1781296713]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("3_bdp6l")
 texture_pressed = ExtResource("3_bdp6l")
@@ -151,7 +181,7 @@ texture_disabled = ExtResource("3_bdp6l")
 texture_focused = ExtResource("3_bdp6l")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer2/LevelSelectButton" unique_id=1333814293]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/ButtonContainer/ButtonContainerRow3/LevelSelectButton" unique_id=1333814293]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

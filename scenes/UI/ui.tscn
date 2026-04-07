@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://d0xlgmrjt88ri"]
 
 [ext_resource type="Script" uid="uid://d0pebd2exiyij" path="res://scenes/level/levels/ui.gd" id="1_7e3k0"]
-[ext_resource type="Script" uid="uid://cjjnfs3kw8w6s" path="res://scenes/level/levels/level_ui.gd" id="2_m41qk"]
-[ext_resource type="Texture2D" uid="uid://bjbleod2jejos" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_grey_bolts_dark.png" id="3_35jxk"]
-[ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="4_tpnoy"]
-[ext_resource type="Script" uid="uid://bwld6mmfx0ir3" path="res://scenes/count_up_timer.gd" id="5_vb61p"]
+[ext_resource type="PackedScene" uid="uid://bmjhv4rmvy0nd" path="res://scenes/UI/level_ui.tscn" id="3_f54a5"]
 [ext_resource type="PackedScene" uid="uid://bh2dp782wif5q" path="res://scenes/UI/win_screen.tscn" id="6_m41qk"]
 [ext_resource type="PackedScene" uid="uid://c6lmtrfq8y2rc" path="res://scenes/UI/pause_screen.tscn" id="8_tpnoy"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_o3tub"]
-font = ExtResource("4_tpnoy")
-
-[node name="UIManager" type="Control" unique_id=446973243 node_paths=PackedStringArray("current_ui")]
+[node name="UIManager" type="Control" unique_id=446973243]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -20,77 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7e3k0")
-current_ui = NodePath("LevelUI")
-
-[node name="WinScreen" parent="." unique_id=1721008017 instance=ExtResource("6_m41qk")]
-process_mode = 1
-visible = false
-layout_mode = 1
-
-[node name="LevelUI" type="Control" parent="." unique_id=1043182713]
-process_mode = 1
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("2_m41qk")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="LevelUI" unique_id=1124115133]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.25
-offset_right = 40.25
-offset_bottom = 36.0
-grow_horizontal = 2
-mouse_filter = 1
-texture = ExtResource("3_35jxk")
-region_rect = Rect2(0, 0, 64, 64)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/NinePatchRect" unique_id=804747651]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -10.0
-offset_right = 20.5
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TimeLabel" type="Label" parent="LevelUI/NinePatchRect/VBoxContainer" unique_id=1389488671]
-layout_mode = 2
-mouse_filter = 1
-text = "0:00"
-label_settings = SubResource("LabelSettings_o3tub")
-horizontal_alignment = 1
-
-[node name="CountUpTimer" type="Node" parent="LevelUI" unique_id=1917145849]
-unique_name_in_owner = true
-script = ExtResource("5_vb61p")
-metadata/_custom_type_script = "uid://bwld6mmfx0ir3"
-
-[node name="Timer" type="Timer" parent="LevelUI/CountUpTimer" unique_id=1536221329]
-autostart = true
-
-[node name="PauseScreen" parent="." unique_id=579878963 instance=ExtResource("8_tpnoy")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+win_screen = ExtResource("6_m41qk")
+level_ui = ExtResource("3_f54a5")
+pause_screen = ExtResource("8_tpnoy")

@@ -1,30 +1,28 @@
 extends Control
 class_name UI
 
-@onready var level_ui = $LevelUI
-@onready var win_screen: WinScreen = $WinScreen
-@onready var pause_screen = $PauseScreen
 @onready var grade_times = $"../..".grade_times
 @onready var level_number = $"../..".level_number
 
 @export var current_ui: Control
 @export var beginning_popup: Control
+@export var win_screen: PackedScene
+@export var level_ui: PackedScene
+@export var pause_screen: PackedScene
+
+var level_time = 0
 
 var level_won: bool = false
 
 func _ready() -> void:
 	if beginning_popup:
-		level_ui.visible = false
-		win_screen.visible = false
-		pause_screen.visible = false
-		
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		current_ui = beginning_popup
 		beginning_popup.close.connect(on_beginning_popup_closed)
 		get_tree().paused = true
-	else:
-		level_ui.visible = true
-		win_screen.visible = false
-		pause_screen.visible = false
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		print("popup")
+
+
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") && level_won == false:
@@ -37,25 +35,27 @@ func _physics_process(delta: float) -> void:
 
 func change_UI(ui_name: String):
 	ui_name = ui_name.to_lower()
-	level_ui.visible = false
-	win_screen.visible = false
-	pause_screen.visible = false
-	if beginning_popup:
-		beginning_popup.visible = false
+	if current_ui:
+		self.remove_child(current_ui)
+	
+	var new_scene_instance
 	match ui_name:
 		"level":
-			level_ui.visible = true
+			new_scene_instance = level_ui.instantiate()
+			new_scene_instance.current_time = level_time
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		"win":
-			win_screen.display_win(%CountUpTimer.current_seconds)
+			new_scene_instance = win_screen.instantiate()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			win_screen.visible = true
 			get_tree().paused = true
 			level_won = true
 		"pause":
+			new_scene_instance = pause_screen.instantiate()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			pause_screen.visible = true
 			get_tree().paused = true
+	
+	self.add_child(new_scene_instance)
+	current_ui = new_scene_instance
 
 func restart_level():
 	level_won = false
@@ -63,6 +63,10 @@ func restart_level():
 	level.initialize_level()
 	change_UI("level")
 
+func level_start():
+	level_time = 0
+
 func on_beginning_popup_closed():
+	print("close")
 	change_UI("level")
 	get_tree().paused = false

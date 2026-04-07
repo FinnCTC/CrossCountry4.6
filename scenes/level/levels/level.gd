@@ -18,7 +18,7 @@ func initialize_level():
 	player.position = start_point.position
 	player.velocity = Vector3.ZERO
 	player.reset_camera()
-	UI.current_ui.stopwatch.start()
+	UI.level_start()
 
 func level_fail():
 	initialize_level()

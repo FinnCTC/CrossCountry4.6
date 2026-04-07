@@ -12,6 +12,7 @@ font = ExtResource("3_ergoy")
 font = ExtResource("3_ergoy")
 
 [node name="BeginningPopup" type="Control" unique_id=1566526780]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

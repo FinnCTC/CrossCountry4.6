@@ -62,6 +62,8 @@
 [ext_resource type="Texture2D" uid="uid://dx4b8btgqj00d" path="res://sprites/UI/title/title/titlescreen0058.png" id="57_dj7s7"]
 [ext_resource type="Texture2D" uid="uid://mech60au5ljl" path="res://sprites/UI/title/title/titlescreen0059.png" id="58_f4p0g"]
 [ext_resource type="Texture2D" uid="uid://5ow1xmckn1in" path="res://sprites/UI/title/title/titlescreen0060.png" id="59_fref5"]
+[ext_resource type="Script" uid="uid://3o13y85p1548" path="res://scenes/UI/button_container.gd" id="60_yddl1"]
+[ext_resource type="Script" uid="uid://dojiaytswf4ku" path="res://scenes/UI/button_container_row.gd" id="62_j23c8"]
 [ext_resource type="Texture2D" uid="uid://bjnvkbvpoir7k" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_brown_close.png" id="63_e5xqj"]
 
 [sub_resource type="Animation" id="Animation_3hlyq"]
@@ -131,20 +133,30 @@ texture = ExtResource("2_pxrdm")
 libraries/ = SubResource("AnimationLibrary_pjpec")
 autoplay = &"animate"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=410649010]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2128078773]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 29.0
-offset_right = 356.0
+offset_right = 448.0
 offset_bottom = 476.0
+script = ExtResource("60_yddl1")
+metadata/_custom_type_script = "uid://3o13y85p1548"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=509060016]
 layout_mode = 2
 texture = ExtResource("1_wctsj")
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer" unique_id=567729220]
+[node name="ButtonContainerRow" type="HBoxContainer" parent="VBoxContainer" unique_id=2022469983]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("62_j23c8")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/ButtonContainerRow" unique_id=567729220]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("2_yjsyi")
 texture_pressed = ExtResource("2_yjsyi")
@@ -153,7 +165,7 @@ texture_disabled = ExtResource("2_yjsyi")
 texture_focused = ExtResource("2_yjsyi")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/TextureButton" unique_id=221032218]
+[node name="Label" type="Label" parent="VBoxContainer/ButtonContainerRow/TextureButton" unique_id=221032218]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,5 +197,5 @@ texture_disabled = ExtResource("63_e5xqj")
 texture_focused = ExtResource("63_e5xqj")
 stretch_mode = 0
 
-[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainerRow/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

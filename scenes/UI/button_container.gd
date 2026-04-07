@@ -9,7 +9,7 @@ var button_mode: BUTTON_MODES = BUTTON_MODES.MOUSE
 
 var selected_button_index: Vector2
 
-var selected_button: LevelButton
+var selected_button: TextureButton
 
 func _ready() -> void:
 	switch_button_mode(BUTTON_MODES.CONTROLLER)
@@ -32,11 +32,15 @@ func move_selection_vertical(direction: int):
 	var start = selected_button_index.y + direction
 	var stop = buttons_array.size() if direction == 1 else -1
 	
+	#print("start: " + str(start))
+	#print("stop: " + str(stop))
+	
 	for i in range(start, stop, direction):
 		var row = buttons_array[i]
 		if row.size() - 1 >= selected_button_index.x:
 			selected_button_index.y = i
 			focus_button(selected_button_index)
+			return
 
 func move_selection_horizontal(direction: int):
 	var current_row = buttons_array[selected_button_index.y]
@@ -53,13 +57,6 @@ func move_selection_horizontal(direction: int):
 	
 	selected_button_index.x += direction
 	focus_button(selected_button_index)
-
-func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		#switch_button_mode(BUTTON_MODES.CONTROLLER)
-	#elif event is InputEventMouse or event is InputEventKey:
-		#switch_button_mode(BUTTON_MODES.MOUSE)
-	pass
 
 func switch_button_mode(new_button_mode: BUTTON_MODES):
 	if new_button_mode == BUTTON_MODES.CONTROLLER:
@@ -78,7 +75,7 @@ func create_buttons_array() -> Array:
 			var array_row: Array[Dictionary] = []
 			
 			for grandchild in button_row.get_children():
-				if grandchild is LevelButton:
+				if grandchild is LevelButton or grandchild is TextureButton:
 					var button = grandchild
 					var button_object = {"button": button, "is_selected": false}
 					array_row.append(button_object)
