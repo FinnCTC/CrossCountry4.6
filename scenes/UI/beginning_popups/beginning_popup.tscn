@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://c5uu84qj1ddly" path="res://scenes/UI/beginning_popups/beginning_popup.gd" id="1_gfl33"]
 [ext_resource type="Texture2D" uid="uid://ddbu4lfpg7awn" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/panel_grey_red.png" id="2_cdlss"]
 [ext_resource type="FontFile" uid="uid://bix0i06fbaep0" path="res://fonts/good timing bd.otf" id="3_ergoy"]
+[ext_resource type="Script" uid="uid://3o13y85p1548" path="res://scenes/UI/button_container.gd" id="3_nun72"]
 [ext_resource type="Texture2D" uid="uid://camwsey7tctgf" path="res://sprites/UI/kenney_ui-pack-adventure/PNG/Default/button_red.png" id="4_07av3"]
+[ext_resource type="Script" uid="uid://dojiaytswf4ku" path="res://scenes/UI/button_container_row.gd" id="5_nun72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nun72"]
 font = ExtResource("3_ergoy")
@@ -54,11 +56,13 @@ grow_vertical = 2
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=895705824]
+[node name="ButtonContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=1442741042]
 layout_mode = 2
 alignment = 1
+script = ExtResource("3_nun72")
+metadata/_custom_type_script = "uid://3o13y85p1548"
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1488002930]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/ButtonContainer" unique_id=1488002930]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -67,10 +71,16 @@ label_settings = SubResource("LabelSettings_nun72")
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ContinueButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=1093526296]
+[node name="ButtonContainerRow2" type="HBoxContainer" parent="NinePatchRect/MarginContainer/ButtonContainer" unique_id=640962599]
+layout_mode = 2
+script = ExtResource("5_nun72")
+metadata/_custom_type_script = "uid://dojiaytswf4ku"
+
+[node name="ContinueButton" type="TextureButton" parent="NinePatchRect/MarginContainer/ButtonContainer/ButtonContainerRow2" unique_id=1093526296]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 6
 texture_normal = ExtResource("4_07av3")
 texture_pressed = ExtResource("4_07av3")
@@ -79,7 +89,7 @@ texture_disabled = ExtResource("4_07av3")
 texture_focused = ExtResource("4_07av3")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/ContinueButton" unique_id=1393843320]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/ButtonContainer/ButtonContainerRow2/ContinueButton" unique_id=1393843320]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

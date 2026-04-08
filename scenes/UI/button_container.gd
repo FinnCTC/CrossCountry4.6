@@ -12,6 +12,7 @@ var selected_button_index: Vector2
 var selected_button: TextureButton
 
 func _ready() -> void:
+	buttons_array = create_buttons_array()
 	switch_button_mode(BUTTON_MODES.CONTROLLER)
 
 func _process(delta: float) -> void:

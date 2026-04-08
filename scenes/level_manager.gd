@@ -16,7 +16,10 @@ func enter_level(level_number: int):
 	var level_instance = level.instantiate()
 	current_level_name = level_instance.name
 	
-	get_tree().paused = false
+	if level_instance.beginning_popup:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
 
 func enter_next_level():
 	var next_level_number = get_current_level_number() + 1

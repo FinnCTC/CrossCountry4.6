@@ -45,11 +45,12 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=95237771 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "land_state", "glide_state", "walk_state", "airdash_state", "fastfall_state")]
+process_mode = 1
 transform = Transform3D(0.9998409, 0, -0.01783632, 0, 1, 0, 0.01783632, 0, 0.9998409, 0, 0, 0)
 collision_mask = 2
 script = ExtResource("1_4flbx")
 mouse_sensitivity = 0.001
-controller_sensitivity = 0.015
+controller_sensitivity = 0.03
 movement_speed = 4
 max_movement_speed = 9
 acceleration = 100.0

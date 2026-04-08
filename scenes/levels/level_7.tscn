@@ -40,10 +40,11 @@ fog_aerial_perspective = 0.732
 fog_height = -679.23
 fog_height_density = 0.0245
 
-[node name="Level7" type="Node3D" unique_id=1810918114]
+[node name="Level7" type="Node3D" unique_id=1810918114 node_paths=PackedStringArray("beginning_popup")]
 script = ExtResource("1_ntash")
 grade_times = Array[int]([6, 15, 20, 30])
 level_number = 7
+beginning_popup = NodePath("Dependancies/UIManager/BeginningPopup")
 metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
 [node name="Dependancies" type="Node3D" parent="." unique_id=1678684041]
