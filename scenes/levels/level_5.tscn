@@ -61,7 +61,7 @@ beginning_popup = NodePath("BeginningPopup")
 
 [node name="BeginningPopup" parent="Dependancies/UIManager" unique_id=1566526780 instance=ExtResource("4_fsnos")]
 layout_mode = 1
-message = "YOUR FINAL MOVE IS THE FAST FALL. PRESS LB MIDAIR TO PLUNGE DOWNWARD."
+message = "YOUR FINAL MOVE IS THE FAST FALL. PRESS RB MIDAIR TO PLUNGE DOWNWARD."
 
 [node name="Course" type="Node3D" parent="." unique_id=1338140909]
 
