@@ -25,4 +25,5 @@ func level_fail():
 	initialize_level()
 
 func level_win(body):
+	Global.levels_completed = level_number
 	UI.change_UI("win")

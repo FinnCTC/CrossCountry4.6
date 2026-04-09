@@ -96,5 +96,8 @@ func focus_button(button_index: Vector2):
 func unfocus_buttons():
 	for row in buttons_array:
 		for button_object in row:
-			button_object.button.modulate = Color(1, 1, 1)
+			if button_object.button.disabled == true:
+				button_object.button.modulate = Color(0.3, 0.3, 0.3, 1)
+			else:
+				button_object.button.modulate = Color(1, 1, 1)
 			button_object.selected = false

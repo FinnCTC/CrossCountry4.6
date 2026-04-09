@@ -9,7 +9,12 @@ font = ExtResource("2_7rldp")
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_7rldp"]
+font = ExtResource("2_7rldp")
+font_color = Color(0, 0, 0, 1)
+
 [node name="LevelButton" type="TextureButton" unique_id=342711618]
+modulate = Color(0.30980393, 0.30980393, 0.30980393, 1)
 texture_filter = 1
 custom_minimum_size = Vector2(150, 150)
 offset_right = 150.0
@@ -40,6 +45,25 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "1"
 label_settings = SubResource("LabelSettings_0i6e4")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1032146555]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 24
+
+[node name="RankLabel" type="Label" parent="MarginContainer" unique_id=1539474907]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+label_settings = SubResource("LabelSettings_7rldp")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -84,7 +84,6 @@ enum movement_types {COLLIDE, SLIDE}
 var movement_type = movement_types.SLIDE
 
 func _process(delta: float) -> void:
-	print(get_tree().paused)
 	#MOVEMENT
 	
 	#Horizontal movement

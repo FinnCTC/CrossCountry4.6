@@ -1,17 +1,26 @@
 extends Node
 
-# money!!! - Finn
-var coins := 0
+var game: Game
+var level_manager: LevelManager
+
+var levels_completed := 0
+var level_ranks := []
+var current_level: Node3D
 
 var debug_value = null
 
 var player_position := Vector3.ZERO
 
-var game: Game
+func _ready() -> void:
+	populate_level_ranks_array()
 
-var level_manager: LevelManager
-
-var current_level: Node3D
+func populate_level_ranks_array():
+	var level_filepath = "res://scenes/levels/level_1.tscn"
+	var i = 1
+	while FileAccess.file_exists(level_filepath):
+		level_ranks.append("")
+		i += 1
+		level_filepath = "res://scenes/levels/level_" + str(i) + ".tscn"
 
 func absolute_is_greater(num1: float, num2: float) -> bool:
 	num1 = abs(num1)
