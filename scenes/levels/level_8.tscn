@@ -78,7 +78,7 @@ transform = Transform3D(3.5, 0, 8.526513e-15, 0, 20, 0, -1.9895196e-14, 0, 1.5, 
 transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 3.1511865, 0, 39, 0)
 
 [node name="Wall5" parent="Course/FanElevator" unique_id=92919125 instance=ExtResource("8_6to6e")]
-transform = Transform3D(3.5, 0, 8.526513e-15, 0, 10, 0, -1.9895196e-14, 0, 1.5, 0, 23, -6)
+transform = Transform3D(3.5, 0, 8.526513e-15, 0, 10.5, 0, -1.9895196e-14, 0, 1.5, 0, 22, -6)
 
 [node name="TempFan" parent="Course/FanElevator" unique_id=1955595447 instance=ExtResource("10_xsrpe")]
 

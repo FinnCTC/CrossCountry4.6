@@ -11,5 +11,4 @@ func _ready():
 	get_tree().paused = true
 
 func on_continue_button_pressed():
-	print("continue")
 	close.emit()

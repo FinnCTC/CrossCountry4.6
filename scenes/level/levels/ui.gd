@@ -20,7 +20,6 @@ func _ready() -> void:
 		beginning_popup.close.connect(on_beginning_popup_closed)
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		print("popup")
 	else:
 		change_UI("level")
 
@@ -69,6 +68,5 @@ func level_start():
 	level_time = 0
 
 func on_beginning_popup_closed():
-	print("close")
 	change_UI("level")
 	get_tree().paused = false
