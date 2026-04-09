@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bvoodmdaa1qn5"]
+
+[ext_resource type="PackedScene" uid="uid://rhh56xghcc37" path="res://models/environment/GATE.glb" id="1_5n3aw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sk5k4"]
+size = Vector3(6.5378876, 2.7609558, 0.055088043)
+
+[node name="GoalArea" type="Area3D" unique_id=2126097829]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1277484243]
+transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0.037208557, 3.71002, 0.0010015517)
+shape = SubResource("BoxShape3D_sk5k4")
+
+[node name="GATE" parent="." unique_id=1428328985 instance=ExtResource("1_5n3aw")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, 0, 0)

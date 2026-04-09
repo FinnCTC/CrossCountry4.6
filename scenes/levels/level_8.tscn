@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dcb7bn0b3j26i" path="res://scenes/level/levels/level.gd" id="1_aq65u"]
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_xsrpe"]
 [ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_0kxia"]
+[ext_resource type="PackedScene" uid="uid://bvoodmdaa1qn5" path="res://scenes/level/goal_area.tscn" id="4_5umh1"]
 [ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_v7ucw"]
 [ext_resource type="PackedScene" uid="uid://y7ffekb0d65y" path="res://scenes/environment/unique_rooms/jump_up_room.tscn" id="6_7snfr"]
 [ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="7_kk2ik"]
@@ -11,9 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="10_e7lui"]
 [ext_resource type="PackedScene" uid="uid://bsdy4m1wjv8xl" path="res://models/temp/temp_fan.tscn" id="10_xsrpe"]
 [ext_resource type="PackedScene" uid="uid://d0mn4rn0h1kdo" path="res://scenes/environment/corridors/long_corridor.tscn" id="11_0kxia"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_acgl5"]
-size = Vector3(24, 2.3972168, 0.6203613)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61loj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -45,19 +43,14 @@ metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
 [node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=1659783683]
 
-[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=603181297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.210285, -73.47167)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=1548743412]
-transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -0.14798546, -1.1483536)
-shape = SubResource("BoxShape3D_acgl5")
-
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_xsrpe")]
 transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
 
 [node name="UIManager" parent="Dependancies" unique_id=446973243 instance=ExtResource("3_0kxia")]
 mouse_filter = 1
+
+[node name="GoalArea" parent="Dependancies" unique_id=2126097829 instance=ExtResource("4_5umh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.0113, -85.75191)
 
 [node name="Course" type="Node3D" parent="." unique_id=886185761]
 

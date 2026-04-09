@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cgsd6gur8xyj1" path="res://scenes/player/player.tscn" id="2_anwe6"]
 [ext_resource type="PackedScene" uid="uid://d0xlgmrjt88ri" path="res://scenes/UI/ui.tscn" id="3_rej77"]
 [ext_resource type="PackedScene" uid="uid://tmuvbeeo5xqh" path="res://scenes/UI/beginning_popups/beginning_popup.tscn" id="4_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://bvoodmdaa1qn5" path="res://scenes/level/goal_area.tscn" id="5_glw47"]
 [ext_resource type="PackedScene" uid="uid://ceiraeierd6mm" path="res://scenes/environment/corridors/closed_corridor.tscn" id="5_ts8eg"]
 [ext_resource type="PackedScene" uid="uid://b522ksum4ngpy" path="res://scenes/environment/floor.tscn" id="6_ts8eg"]
 [ext_resource type="PackedScene" uid="uid://dikf3vte8wpic" path="res://scenes/environment/wall.tscn" id="7_um320"]
 [ext_resource type="PackedScene" uid="uid://dv34itbcmj8rj" path="res://scenes/environment/roof.tscn" id="8_glw47"]
 [ext_resource type="PackedScene" uid="uid://l0m01lvxijv7" path="res://scenes/level/hazard.tscn" id="9_um320"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_um320"]
-size = Vector3(24, 5.7391357, 0.6203613)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_um320"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -44,14 +42,6 @@ metadata/_custom_type_script = "uid://dcb7bn0b3j26i"
 
 [node name="StartPoint" type="Node3D" parent="Dependancies" unique_id=657149987]
 
-[node name="GoalArea" type="Area3D" parent="Dependancies" unique_id=1271754779]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.341755, 42.350456)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dependancies/GoalArea" unique_id=304336282]
-transform = Transform3D(1, 0, 0, 0, 2.7, 0, 0, 0, 8.9, 0, -1.444818, -14.377968)
-shape = SubResource("BoxShape3D_um320")
-
 [node name="Player" parent="Dependancies" unique_id=95237771 instance=ExtResource("2_anwe6")]
 transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, 0, 0.865404, 0)
 
@@ -63,6 +53,9 @@ beginning_popup = NodePath("BeginningPopup")
 layout_mode = 1
 message = "TO GET PAST THIS LEVEL, YOU'LL NEED TO USE THE AIRDASH! PRESS LB MIDAIR TO DASH!"
 
+[node name="GoalArea" parent="Dependancies" unique_id=2126097829 instance=ExtResource("5_glw47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9425035, 27.615257)
+
 [node name="Course" type="Node3D" parent="." unique_id=1224879977]
 
 [node name="ClosedCorridor" parent="Course" unique_id=1446047497 instance=ExtResource("5_ts8eg")]
@@ -71,7 +64,7 @@ message = "TO GET PAST THIS LEVEL, YOU'LL NEED TO USE THE AIRDASH! PRESS LB MIDA
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
 
 [node name="Floor" parent="Course/LavaJumpUpRoom" unique_id=584148717 instance=ExtResource("6_ts8eg")]
-transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 3.2876573, 0, 0, -1.1908836)
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0, 0, -1.1908836)
 
 [node name="Wall" parent="Course/LavaJumpUpRoom" unique_id=1312718944 instance=ExtResource("7_um320")]
 transform = Transform3D(-2.1855695e-07, 0, 1.5, 0, 6.5, 0, -5, 0, -6.556708e-08, 4, 10, 1)
