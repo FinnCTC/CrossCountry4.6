@@ -22,12 +22,16 @@ func _process(delta: float) -> void:
 						body_falling_speed = body.velocity.y
 	if bounce_area.has_overlapping_bodies():
 		for body in bounce_area.get_overlapping_bodies():
-			if body is Player:
+			if body is Player && body_falling_speed < 0:
+				if body_falling_speed < 5:
+					body_falling_speed = 10
 				body.velocity.y = -(body_falling_speed * 0.9)
+				print("process bounce")
 
 func bounce_area_on_body_entered(body):
 	if body.name == "Player" && body is CharacterBody3D:
 		if body_falling_speed < 0:
+			print("body entered bounce")
 			body.velocity.y = -(body_falling_speed * 0.9)
 
 func detection_area_on_body_exited(body):

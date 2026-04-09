@@ -27,7 +27,14 @@ func _process(delta: float) -> void:
 			move_selection_horizontal(1)
 		
 		if Input.is_action_just_pressed("move_jump"):
-			selected_button.pressed.emit()
+			if selected_button.disabled == false:
+				selected_button.pressed.emit()
+
+#func _unhandled_input(event: InputEvent) -> void:
+	#if (event is InputEventJoypadButton or event is InputEventJoypadMotion) && button_mode == BUTTON_MODES.MOUSE:
+		#switch_button_mode(BUTTON_MODES.CONTROLLER)
+	#elif (event is InputEventKey or event is InputEventMouse) && button_mode == BUTTON_MODES.CONTROLLER:
+		#switch_button_mode(BUTTON_MODES.CONTROLLER)
 
 func move_selection_vertical(direction: int):
 	var start = selected_button_index.y + direction
