@@ -11,6 +11,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
+	print(body_falling_speed)
+	
 	var v_distance_to_player = Global.player_position.y - global_position.y as int
 	$DetectionArea/CollisionShape3D.shape.size.y = (abs(v_distance_to_player) * 2) + 3
 	
@@ -23,10 +25,9 @@ func _process(delta: float) -> void:
 	if bounce_area.has_overlapping_bodies():
 		for body in bounce_area.get_overlapping_bodies():
 			if body is Player && body_falling_speed < 0:
-				if body_falling_speed < 5:
-					body_falling_speed = 10
+				if body_falling_speed > -5:
+					body_falling_speed = -10
 				body.velocity.y = -(body_falling_speed * 0.9)
-				print("process bounce")
 
 func bounce_area_on_body_entered(body):
 	if body.name == "Player" && body is CharacterBody3D:
